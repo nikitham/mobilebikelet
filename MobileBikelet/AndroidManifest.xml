@@ -22,6 +22,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.sjsu.mobilebikelet.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+        </activity>
+        <activity
+            android:name="com.sjsu.mobilebikelet.CheckinActivity"
+            android:label="@string/title_activity_checkin" >
+        </activity>
+        <activity
+            android:name="com.sjsu.mobilebikelet.CheckoutActivity"
+            android:label="@string/title_activity_checkout" >
+        </activity>
+        <activity
+            android:name="com.sjsu.mobilebikelet.ViewTransactionActivity"
+            android:label="@string/title_activity_view_transaction" >
+        </activity>
     </application>
 
 </manifest>
