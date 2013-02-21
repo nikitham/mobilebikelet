@@ -3,7 +3,11 @@
 
     <string name="app_name">MobileBikelet</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Hello BikeLet User!</string>
+    <string name="to_station">Checkin Station</string>
+        <string name="from_station">Checkout Station</string>
+    
+    <string name="comments">Comments</string>
     <string name="title_activity_checkin">CheckinActivity</string>
     <string name="title_activity_checkout">CheckoutActivity</string>
     <string name="title_activity_view_transaction">ViewTransactionActivity</string>
