@@ -1,9 +1,13 @@
 package com.sjsu.mobilebikelet;
 
+import com.sjsu.mobilebikelet.util.ApplicationConstants;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,12 +42,12 @@ public class LoginActivity extends Activity {
 	private UserLoginTask mAuthTask = null;
 
 	// Values for email and password at the time of the login attempt.
-	private String mEmail;
+	private String bikeuser;
 	private String mPassword;
 
 	// UI references.
-	private EditText mEmailView;
-	private EditText mPasswordView;
+	private EditText username;
+	private EditText password;
 	private View mLoginFormView;
 	private View mLoginStatusView;
 	private TextView mLoginStatusMessageView;
@@ -55,12 +59,12 @@ public class LoginActivity extends Activity {
 		setContentView(R.layout.activity_login);
 
 		// Set up the login form.
-		mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
-		mEmailView = (EditText) findViewById(R.id.email);
-		mEmailView.setText(mEmail);
+		bikeuser = getIntent().getStringExtra(EXTRA_EMAIL);
+		username = (EditText) findViewById(R.id.email);
+		username.setText(bikeuser);
 
-		mPasswordView = (EditText) findViewById(R.id.password);
-		mPasswordView
+		password = (EditText) findViewById(R.id.password);
+		password
 				.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 					@Override
 					public boolean onEditorAction(TextView textView, int id,
@@ -99,55 +103,64 @@ public class LoginActivity extends Activity {
 	 * errors are presented and no actual login attempt is made.
 	 */
 	public void attemptLogin() {
-		if (mAuthTask != null) {
-			return;
-		}
-
-		// Reset errors.
-		mEmailView.setError(null);
-		mPasswordView.setError(null);
-
-		// Store values at the time of the login attempt.
-		mEmail = mEmailView.getText().toString();
-		mPassword = mPasswordView.getText().toString();
-
-		boolean cancel = false;
-		View focusView = null;
-
-		// Check for a valid password.
-		if (TextUtils.isEmpty(mPassword)) {
-			mPasswordView.setError(getString(R.string.error_field_required));
-			focusView = mPasswordView;
-			cancel = true;
-		} else if (mPassword.length() < 4) {
-			mPasswordView.setError(getString(R.string.error_invalid_password));
-			focusView = mPasswordView;
-			cancel = true;
-		}
-
-		// Check for a valid email address.
-		if (TextUtils.isEmpty(mEmail)) {
-			mEmailView.setError(getString(R.string.error_field_required));
-			focusView = mEmailView;
-			cancel = true;
-		} else if (!mEmail.contains("@")) {
-			mEmailView.setError(getString(R.string.error_invalid_email));
-			focusView = mEmailView;
-			cancel = true;
-		}
-
-		if (cancel) {
-			// There was an error; don't attempt login and focus the first
-			// form field with an error.
-			focusView.requestFocus();
-		} else {
-			// Show a progress spinner, and kick off a background task to
-			// perform the user login attempt.
-			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
-			showProgress(true);
-			mAuthTask = new UserLoginTask();
-			mAuthTask.execute((Void) null);
-		}
+		SharedPreferences settings = getSharedPreferences(ApplicationConstants.USER_PREF, 0);
+	    SharedPreferences.Editor editor = settings.edit();
+	    editor.putString(ApplicationConstants.USERNAME, username.getText().toString());
+	    editor.putString(ApplicationConstants.PASSWORD, password.getText().toString());
+	        
+	     editor.commit();
+		    
+		Intent i = new Intent(this, MainActivity.class);
+		startActivity(i);
+//		if (mAuthTask != null) {
+//			return;
+//		}
+//
+//		// Reset errors.
+//		username.setError(null);
+//		password.setError(null);
+//
+//		// Store values at the time of the login attempt.
+//		bikeuser = username.getText().toString();
+//		mPassword = password.getText().toString();
+//
+//		boolean cancel = false;
+//		View focusView = null;
+//
+//		// Check for a valid password.
+//		if (TextUtils.isEmpty(mPassword)) {
+//			password.setError(getString(R.string.error_field_required));
+//			focusView = password;
+//			cancel = true;
+//		} else if (mPassword.length() < 4) {
+//			password.setError(getString(R.string.error_invalid_password));
+//			focusView = password;
+//			cancel = true;
+//		}
+//
+//		// Check for a valid email address.
+//		if (TextUtils.isEmpty(bikeuser)) {
+//			username.setError(getString(R.string.error_field_required));
+//			focusView = username;
+//			cancel = true;
+//		} else if (!bikeuser.contains("@")) {
+//			username.setError(getString(R.string.error_invalid_email));
+//			focusView = username;
+//			cancel = true;
+//		}
+//
+//		if (cancel) {
+//			// There was an error; don't attempt login and focus the first
+//			// form field with an error.
+//			focusView.requestFocus();
+//		} else {
+//			// Show a progress spinner, and kick off a background task to
+//			// perform the user login attempt.
+//			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
+//			showProgress(true);
+//			mAuthTask = new UserLoginTask();
+//			mAuthTask.execute((Void) null);
+//		}
 	}
 
 	/**
@@ -209,7 +222,7 @@ public class LoginActivity extends Activity {
 
 			for (String credential : DUMMY_CREDENTIALS) {
 				String[] pieces = credential.split(":");
-				if (pieces[0].equals(mEmail)) {
+				if (pieces[0].equals(bikeuser)) {
 					// Account exists, return true if the password matches.
 					return pieces[1].equals(mPassword);
 				}
@@ -227,9 +240,9 @@ public class LoginActivity extends Activity {
 			if (success) {
 				finish();
 			} else {
-				mPasswordView
+				password
 						.setError(getString(R.string.error_incorrect_password));
-				mPasswordView.requestFocus();
+				password.requestFocus();
 			}
 		}
 
