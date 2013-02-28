@@ -1,5 +1,9 @@
 package com.sjsu.mobilebikelet;
 
+import com.google.gson.Gson;
+import com.sjsu.mobilebikelet.util.RequestMethod;
+import com.sjsu.mobilebikelet.util.RestClient;
+import com.sjsu.mobilebikelet.util.RestClientFactory;
 import com.sjsu.mobilebikelet.util.ApplicationConstants;
 
 import android.animation.Animator;
@@ -12,6 +16,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -244,6 +249,43 @@ public class LoginActivity extends Activity {
 						.setError(getString(R.string.error_incorrect_password));
 				password.requestFocus();
 			}
+			
+			final String INNER_TAG = "getBikeDetails";
+
+				SharedPreferences prefs = getSharedPreferences(
+						ApplicationConstants.USER_PREF, 0);
+				
+				RestClient client = RestClientFactory
+						.getRequestClient(prefs);
+				
+//				Log.i(INNER_TAG, user_name);
+				
+				client.addParam("username", username.getText().toString());
+				client.addParam("password", password.getText().toString());
+				
+				try {
+					client.execute(RequestMethod.GET);
+
+					if (client.getResponseCode() != 200) {
+						// return server error
+						Log.e(INNER_TAG, client.getErrorMessage());
+					}
+					// return valid data
+					String jsonResult = client.getResponse();
+					Log.i(INNER_TAG, jsonResult);
+					Gson gson = new Gson();
+					System.out.println("Before fromJson");
+//					RequestResponseDetailRest restResponse = gson.fromJson(
+//							jsonResult, RequestResponseDetailRest.class);
+					System.out.println("After fromJson");
+//					System.out.println("restResponse..............." + restResponse);
+//					if (restResponse.getRequestResponseDetails() != null) {
+//						requestDetails = restResponse.getRequestResponseDetails();
+//						System.out.println("Request Response output size .... "
+//								+ requestDetails.size());
+				} catch (Exception e) {
+					Log.e(INNER_TAG, e.toString());
+				}
 		}
 
 		@Override
