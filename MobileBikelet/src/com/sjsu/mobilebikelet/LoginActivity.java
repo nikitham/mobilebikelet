@@ -1,6 +1,11 @@
 package com.sjsu.mobilebikelet;
 
+import java.util.List;
+
 import com.google.gson.Gson;
+import com.sjsu.mobilebikelet.dto.RentTransaction;
+import com.sjsu.mobilebikelet.dto.Station;
+import com.sjsu.mobilebikelet.dto.Transaction;
 import com.sjsu.mobilebikelet.util.RequestMethod;
 import com.sjsu.mobilebikelet.util.RestClient;
 import com.sjsu.mobilebikelet.util.RestClientFactory;
@@ -36,6 +41,8 @@ public class LoginActivity extends Activity {
 	private static final String[] DUMMY_CREDENTIALS = new String[] {
 			"foo@example.com:hello", "bar@example.com:world" };
 
+	Transaction transactions = new Transaction();
+	
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -69,8 +76,7 @@ public class LoginActivity extends Activity {
 		username.setText(bikeuser);
 
 		password = (EditText) findViewById(R.id.password);
-		password
-				.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+		password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 					@Override
 					public boolean onEditorAction(TextView textView, int id,
 							KeyEvent keyEvent) {
@@ -115,57 +121,59 @@ public class LoginActivity extends Activity {
 	        
 	     editor.commit();
 		    
-		Intent i = new Intent(this, MainActivity.class);
-		startActivity(i);
+//		Intent i = new Intent(this, MainActivity.class);
+//		startActivity(i);
 //		if (mAuthTask != null) {
 //			return;
 //		}
-//
-//		// Reset errors.
-//		username.setError(null);
-//		password.setError(null);
-//
-//		// Store values at the time of the login attempt.
-//		bikeuser = username.getText().toString();
-//		mPassword = password.getText().toString();
-//
-//		boolean cancel = false;
-//		View focusView = null;
-//
-//		// Check for a valid password.
-//		if (TextUtils.isEmpty(mPassword)) {
-//			password.setError(getString(R.string.error_field_required));
-//			focusView = password;
-//			cancel = true;
-//		} else if (mPassword.length() < 4) {
-//			password.setError(getString(R.string.error_invalid_password));
-//			focusView = password;
-//			cancel = true;
-//		}
-//
-//		// Check for a valid email address.
-//		if (TextUtils.isEmpty(bikeuser)) {
-//			username.setError(getString(R.string.error_field_required));
-//			focusView = username;
-//			cancel = true;
-//		} else if (!bikeuser.contains("@")) {
-//			username.setError(getString(R.string.error_invalid_email));
-//			focusView = username;
-//			cancel = true;
-//		}
-//
-//		if (cancel) {
-//			// There was an error; don't attempt login and focus the first
-//			// form field with an error.
-//			focusView.requestFocus();
-//		} else {
-//			// Show a progress spinner, and kick off a background task to
-//			// perform the user login attempt.
-//			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
-//			showProgress(true);
-//			mAuthTask = new UserLoginTask();
-//			mAuthTask.execute((Void) null);
-//		}
+
+		// Reset errors.
+		username.setError(null);
+		password.setError(null);
+
+		// Store values at the time of the login attempt.
+		bikeuser = username.getText().toString();
+		mPassword = password.getText().toString();
+
+		boolean cancel = false;
+		View focusView = null;
+
+		// Check for a valid password.
+		if (TextUtils.isEmpty(mPassword)) {
+			password.setError(getString(R.string.error_field_required));
+			focusView = password;
+			cancel = true;
+		} else if (mPassword.length() < 4) {
+			password.setError(getString(R.string.error_invalid_password));
+			focusView = password;
+			cancel = true;
+		}
+
+		// Check for a valid email address.
+		if (TextUtils.isEmpty(bikeuser)) {
+			username.setError(getString(R.string.error_field_required));
+			focusView = username;
+			cancel = true;
+		} 
+
+		if (cancel) {
+			// There was an error; don't attempt login and focus the first
+			// form field with an error.
+			focusView.requestFocus();
+		} else {
+			// Show a progress spinner, and kick off a background task to
+			// perform the user login attempt.
+			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
+			showProgress(true);
+			System.out.println("Check!!!!!!!!!!!!!!!!!!!");
+
+			
+			mAuthTask = new UserLoginTask();
+//			
+			mAuthTask.execute((Void) null);
+			
+			
+		}
 	}
 
 	/**
@@ -220,17 +228,52 @@ public class LoginActivity extends Activity {
 
 			try {
 				// Simulate network access.
+
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				return false;
 			}
 
-			for (String credential : DUMMY_CREDENTIALS) {
-				String[] pieces = credential.split(":");
-				if (pieces[0].equals(bikeuser)) {
-					// Account exists, return true if the password matches.
-					return pieces[1].equals(mPassword);
+
+			final String INNER_TAG = "getBikeDetails";
+
+			SharedPreferences prefs = getSharedPreferences(
+					ApplicationConstants.USER_PREF, 0);
+			
+			RestClient client = RestClientFactory
+					.getRequestClient(prefs);
+			
+//			Log.i(INNER_TAG, user_name);
+
+			client.addParam("username", username.getText().toString());
+			client.addParam("password", password.getText().toString());
+
+			try {
+				client.execute(RequestMethod.GET);
+
+				if (client.getResponseCode() != 200) {
+					// return server error
+					
+					Log.e(INNER_TAG, client.getErrorMessage());
 				}
+
+				// return valid data
+				String jsonResult = client.getResponse();
+				Log.i(INNER_TAG, jsonResult);
+				Gson gson = new Gson();
+				System.out.println("Before fromJson");
+				Transaction restResponse = gson.fromJson(
+					      jsonResult, Transaction.class);
+					    System.out.println("After fromJson");
+					    System.out.println("restResponse..............." + restResponse.getTransaction().getAccessKey());
+					    List<Station> listofstations = restResponse.getTransaction().getStationlist();
+					    System.out.println("The Stations are : "+listofstations.get(0).getLocation());
+					    if (restResponse!=null){
+					    	transactions = restResponse;
+					    	
+					    }
+			} catch (Exception e) {
+				Log.e(INNER_TAG, e.toString());
 			}
 
 			// TODO: register the new account here.
@@ -241,51 +284,19 @@ public class LoginActivity extends Activity {
 		protected void onPostExecute(final Boolean success) {
 			mAuthTask = null;
 			showProgress(false);
-
+System.out.println("Transaction Info "+transactions.getTransaction().getAccessKey());
+			Intent i = new Intent(LoginActivity.this, CheckinActivity.class);
+			//Bundle b = new Bundle();
+			//i.putExtra("transactions", transactions);
+			startActivity(i); 
 			if (success) {
 				finish();
 			} else {
-				password
-						.setError(getString(R.string.error_incorrect_password));
+				password.setError(getString(R.string.error_incorrect_password));
 				password.requestFocus();
 			}
 			
-			final String INNER_TAG = "getBikeDetails";
-
-				SharedPreferences prefs = getSharedPreferences(
-						ApplicationConstants.USER_PREF, 0);
-				
-				RestClient client = RestClientFactory
-						.getRequestClient(prefs);
-				
-//				Log.i(INNER_TAG, user_name);
-				
-				client.addParam("username", username.getText().toString());
-				client.addParam("password", password.getText().toString());
-				
-				try {
-					client.execute(RequestMethod.GET);
-
-					if (client.getResponseCode() != 200) {
-						// return server error
-						Log.e(INNER_TAG, client.getErrorMessage());
-					}
-					// return valid data
-					String jsonResult = client.getResponse();
-					Log.i(INNER_TAG, jsonResult);
-					Gson gson = new Gson();
-					System.out.println("Before fromJson");
-//					RequestResponseDetailRest restResponse = gson.fromJson(
-//							jsonResult, RequestResponseDetailRest.class);
-					System.out.println("After fromJson");
-//					System.out.println("restResponse..............." + restResponse);
-//					if (restResponse.getRequestResponseDetails() != null) {
-//						requestDetails = restResponse.getRequestResponseDetails();
-//						System.out.println("Request Response output size .... "
-//								+ requestDetails.size());
-				} catch (Exception e) {
-					Log.e(INNER_TAG, e.toString());
-				}
+			
 		}
 
 		@Override

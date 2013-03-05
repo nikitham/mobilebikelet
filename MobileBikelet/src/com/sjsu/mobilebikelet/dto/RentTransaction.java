@@ -1,6 +1,7 @@
 package com.sjsu.mobilebikelet.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class RentTransaction {
 
@@ -10,9 +11,9 @@ public class RentTransaction {
 
     private String toStation;
 
-    private Date rentStartDate;
+    private String rentStartDate;
 
-    private Date rentEndDate;
+    private String rentEndDate;
 
     private String status;
 
@@ -21,9 +22,19 @@ public class RentTransaction {
 	private String bike;
 	
 	private String accessKey;
+	
+	private List<Station> stationList; 
     
     
-    public Long getId() {
+    public List<Station> getStationlist() {
+		return stationList;
+	}
+
+	public void setStationlist(List<Station> stationlist) {
+		this.stationList = stationlist;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
@@ -47,19 +58,19 @@ public class RentTransaction {
 		this.toStation = toStation;
 	}
 
-	public Date getRentStartDate() {
+	public String getRentStartDate() {
 		return rentStartDate;
 	}
 
-	public void setRentStartDate(Date rentStartDate) {
+	public void setRentStartDate(String rentStartDate) {
 		this.rentStartDate = rentStartDate;
 	}
 
-	public Date getRentEndDate() {
+	public String getRentEndDate() {
 		return rentEndDate;
 	}
 
-	public void setRentEndDate(Date rentEndDate) {
+	public void setRentEndDate(String rentEndDate) {
 		this.rentEndDate = rentEndDate;
 	}
 
