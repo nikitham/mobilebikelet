@@ -284,8 +284,9 @@ public class LoginActivity extends Activity {
 		protected void onPostExecute(final Boolean success) {
 			mAuthTask = null;
 			showProgress(false);
-System.out.println("Transaction Info "+transactions.getTransaction().getAccessKey());
+			System.out.println("Transaction Info "+transactions.getTransaction().getAccessKey());
 			Intent i = new Intent(LoginActivity.this, CheckinActivity.class);
+			i.putExtra(CheckinActivity.STATIONS,transactions.getTransaction().getStatus());
 			//Bundle b = new Bundle();
 			//i.putExtra("transactions", transactions);
 			startActivity(i); 
