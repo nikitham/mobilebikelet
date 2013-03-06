@@ -268,6 +268,7 @@ public class LoginActivity extends Activity {
 					    System.out.println("restResponse..............." + restResponse.getTransaction().getAccessKey());
 					    List<Station> listofstations = restResponse.getTransaction().getStationlist();
 					    System.out.println("The Stations are : "+listofstations.get(0).getLocation());
+					    CheckinActivity.STATIONS = listofstations;
 					    if (restResponse!=null){
 					    	transactions = restResponse;
 					    	
@@ -284,9 +285,9 @@ public class LoginActivity extends Activity {
 		protected void onPostExecute(final Boolean success) {
 			mAuthTask = null;
 			showProgress(false);
-			System.out.println("Transaction Info "+transactions.getTransaction().getAccessKey());
-			Intent i = new Intent(LoginActivity.this, CheckinActivity.class);
-			i.putExtra(CheckinActivity.STATIONS,transactions.getTransaction().getStatus());
+			System.out.println("Transaction Info "+transactions.getTransaction().getStationlist().get(0));
+			Intent i = new Intent(LoginActivity.this, HomeScreenActivity.class);
+			//i.putExtra(CheckinActivity.STATIONS,transactions.getTransaction().getStatus());
 			//Bundle b = new Bundle();
 			//i.putExtra("transactions", transactions);
 			startActivity(i); 

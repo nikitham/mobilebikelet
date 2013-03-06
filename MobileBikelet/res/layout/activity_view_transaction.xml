@@ -11,14 +11,14 @@
     tools:context=".ViewTransactionActivity" >
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/checkintext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="30dp"
         android:text="@string/hello_world" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/checkouttext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -42,7 +42,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/TextView01"
+        android:id="@+id/statisticstext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"

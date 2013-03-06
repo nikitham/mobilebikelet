@@ -13,12 +13,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30sp"
         android:text="@string/hello_world" />
-
-    <View
-        android:id="@+id/view1"
-        android:layout_width="wrap_content"
-        android:layout_height="15dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,23 +24,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20sp"
             android:text="@string/to_station" />
 
-        <View
-            android:id="@+id/view2"
-            android:layout_width="13dp"
-            android:layout_height="35dp" />
-
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/checkinstationspinner"
             android:layout_width="wrap_content"
             android:layout_height="34dp" />
     </LinearLayout>
-
-    <View
-        android:id="@+id/view3"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,25 +40,22 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/checkouttext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
             android:text="@string/comments"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/inputcomments"
             android:layout_width="match_parent"
             android:layout_height="64dp"
+            android:layout_marginBottom="30sp"
             android:ems="10"
             android:inputType="textMultiLine" />
 
     </LinearLayout>
-
-    <View
-        android:id="@+id/view4"
-        android:layout_width="wrap_content"
-        android:layout_height="21dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,7 +64,7 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/checkinginbutton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Check In" />

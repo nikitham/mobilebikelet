@@ -8,21 +8,23 @@
         android:layout_height="wrap_content" >
 
         <ImageButton
-            android:id="@+id/imageButton1"
+            android:id="@+id/checkoutbutton"
             android:layout_width="76dp"
             android:layout_height="71dp"
             android:layout_marginLeft="30sp"
             android:layout_marginRight="50sp"
             android:layout_marginTop="100sp"
+            android:clickable="true"
             android:src="@drawable/ic_launcher_ridebike" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/checkinbutton"
             android:layout_width="76dp"
             android:layout_height="71dp"
             android:layout_marginLeft="60sp"
             android:layout_marginRight="50sp"
             android:layout_marginTop="100sp"
+            android:onClick="checkInBike"
             android:src="@drawable/ic_launcher_bikerack" />
 
     </LinearLayout>
@@ -32,7 +34,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/checkouttext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10sp"
@@ -40,7 +42,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/checkintext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70sp"
@@ -54,7 +56,7 @@
         android:layout_height="wrap_content" >
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/transactionbutton"
             android:layout_width="76dp"
             android:layout_height="71dp"
             android:layout_marginLeft="30sp"
@@ -63,12 +65,12 @@
             android:src="@drawable/ic_launcher_renttransactions" />
         
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/statisticsbutton"
             android:layout_width="76dp"
             android:layout_height="71dp"
             android:layout_marginLeft="60sp"
             android:layout_marginRight="50sp"
-			android:layout_marginTop="70sp"
+            android:layout_marginTop="70sp"
             android:src="@drawable/ic_launcher_statisticsicon" />
 
     </LinearLayout>
@@ -78,7 +80,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/TextView02"
+            android:id="@+id/transactiontext"
             android:layout_width="125dp"
             android:layout_height="42dp"
             android:layout_marginLeft="10sp"
@@ -86,7 +88,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/TextView01"
+            android:id="@+id/statisticstext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70sp"
