@@ -4,7 +4,7 @@ public class ApplicationConstants {
 
 	public static String USER_PREF = "USER_PREF";
 
-	public static String APPLICATION_HOST = "http://10.0.2.2:8080";
+	public static String APPLICATION_HOST = "http://192.168.228.1:8080";
 	public static String PETSITTER_SEARCH_JSON_URL = APPLICATION_HOST
 			+ "/petsitter/search/simple.json";
 	
@@ -12,7 +12,7 @@ public class ApplicationConstants {
 			+ "/petsitter/petdetails/simple.json";
 
 	public static String SEND_REQUEST_JSON_URL = APPLICATION_HOST
-			+ "/petsitter/requests/";
+			+ "/bikelet/renttransactions/gettransaction.json";
 	
 	public static String REQUESTS_URL = APPLICATION_HOST
 			+ "/petsitter/requests/requestresponse.json";
