@@ -40,7 +40,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/checkouttext"
+            android:id="@+id/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30sp"
@@ -67,7 +67,9 @@
             android:id="@+id/checkinginbutton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:onClick="checkinUpdatedInfo"
             android:text="Check In" />
+
     </LinearLayout>
 
 </LinearLayout>

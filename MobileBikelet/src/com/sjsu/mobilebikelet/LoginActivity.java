@@ -269,6 +269,7 @@ public class LoginActivity extends Activity {
 					    List<Station> listofstations = restResponse.getTransaction().getStationlist();
 					    System.out.println("The Stations are : "+listofstations.get(0).getLocation());
 					    CheckinActivity.STATIONS = listofstations;
+					    CheckinActivity.UPDATEDTRANSACTION = restResponse;
 					    if (restResponse!=null){
 					    	transactions = restResponse;
 					    	
