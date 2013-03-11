@@ -1,0 +1,18 @@
+# Project wide .gitignore settings
+
+*.jar
+*.zip
+*.log
+*.log.*
+*.class
+*.orig
+
+.idea
+.project
+.classpath
+.metadata
+.settings
+target
+build
+classes\
+MobileBikelet\bin\

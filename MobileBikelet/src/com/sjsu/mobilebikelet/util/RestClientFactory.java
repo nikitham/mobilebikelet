@@ -5,6 +5,10 @@ import android.content.SharedPreferences;
 
 public class RestClientFactory {
 
+	public static RestClient getAuthenticationClient(SharedPreferences pref) {
+		return new RestClient (pref, ApplicationConstants.AUTHENTICATION_JSON_URL);
+	}
+
 	public static RestClient getSearchPetSitterClient(SharedPreferences pref) {
 		return new RestClient (pref, ApplicationConstants.PETSITTER_SEARCH_JSON_URL);
 	}

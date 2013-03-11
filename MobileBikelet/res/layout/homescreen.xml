@@ -3,6 +3,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -13,7 +14,7 @@
             android:layout_height="71dp"
             android:layout_marginLeft="30sp"
             android:layout_marginRight="50sp"
-            android:layout_marginTop="100sp"
+            android:layout_marginTop="50sp"
             android:clickable="true"
             android:src="@drawable/ic_launcher_ridebike" />
 
@@ -23,10 +24,9 @@
             android:layout_height="71dp"
             android:layout_marginLeft="60sp"
             android:layout_marginRight="50sp"
-            android:layout_marginTop="100sp"
+            android:layout_marginTop="50sp"
             android:onClick="checkInBike"
             android:src="@drawable/ic_launcher_bikerack" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -48,7 +48,6 @@
             android:layout_marginLeft="70sp"
             android:text="Check In Bike"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -64,7 +63,7 @@
             android:layout_marginTop="70sp"
             android:onClick="clickViewTransaction"
             android:src="@drawable/ic_launcher_renttransactions" />
-        
+
         <ImageButton
             android:id="@+id/statisticsbutton"
             android:layout_width="76dp"
@@ -74,7 +73,6 @@
             android:layout_marginTop="70sp"
             android:onClick="clickViewStatistics"
             android:src="@drawable/ic_launcher_statisticsicon" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -97,5 +95,38 @@
             android:text="View Statistics"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
+    
+     <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="wrap_content" >
 
+  		<ImageButton
+            android:id="@+id/signoutbutton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginTop="40sp"
+            android:layout_weight="0.04"
+            android:onClick="signOut"
+            android:src="@drawable/ic_exit" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/transactiontext"
+            android:layout_width="125dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="10sp"
+            android:text="Sign Out"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+     
+    </LinearLayout>
+    
 </LinearLayout>

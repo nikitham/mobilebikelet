@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.sjsu.mobilebikelet.dto.RentTransaction;
 import com.sjsu.mobilebikelet.dto.Station;
 import com.sjsu.mobilebikelet.dto.Transaction;
+import com.sjsu.mobilebikelet.dto.User;
 import com.sjsu.mobilebikelet.util.RequestMethod;
 import com.sjsu.mobilebikelet.util.RestClient;
 import com.sjsu.mobilebikelet.util.RestClientFactory;
@@ -41,8 +42,8 @@ public class LoginActivity extends Activity {
 	private static final String[] DUMMY_CREDENTIALS = new String[] {
 			"foo@example.com:hello", "bar@example.com:world" };
 
-	Transaction transactions = new Transaction();
-	
+	User user = new User();
+
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -72,21 +73,21 @@ public class LoginActivity extends Activity {
 
 		// Set up the login form.
 		bikeuser = getIntent().getStringExtra(EXTRA_EMAIL);
-		username = (EditText) findViewById(R.id.email);
+		username = (EditText) findViewById(R.id.username);
 		username.setText(bikeuser);
 
 		password = (EditText) findViewById(R.id.password);
 		password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-					@Override
-					public boolean onEditorAction(TextView textView, int id,
-							KeyEvent keyEvent) {
-						if (id == R.id.login || id == EditorInfo.IME_NULL) {
-							attemptLogin();
-							return true;
-						}
-						return false;
-					}
-				});
+			@Override
+			public boolean onEditorAction(TextView textView, int id,
+					KeyEvent keyEvent) {
+				if (id == R.id.login || id == EditorInfo.IME_NULL) {
+					attemptLogin();
+					return true;
+				}
+				return false;
+			}
+		});
 
 		mLoginFormView = findViewById(R.id.login_form);
 		mLoginStatusView = findViewById(R.id.login_status);
@@ -114,18 +115,21 @@ public class LoginActivity extends Activity {
 	 * errors are presented and no actual login attempt is made.
 	 */
 	public void attemptLogin() {
-		SharedPreferences settings = getSharedPreferences(ApplicationConstants.USER_PREF, 0);
-	    SharedPreferences.Editor editor = settings.edit();
-	    editor.putString(ApplicationConstants.USERNAME, username.getText().toString());
-	    editor.putString(ApplicationConstants.PASSWORD, password.getText().toString());
-	        
-	     editor.commit();
-		    
-//		Intent i = new Intent(this, MainActivity.class);
-//		startActivity(i);
-//		if (mAuthTask != null) {
-//			return;
-//		}
+		SharedPreferences settings = getSharedPreferences(
+				ApplicationConstants.USER_PREF, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putString(ApplicationConstants.USERNAME, username.getText()
+				.toString());
+		editor.putString(ApplicationConstants.PASSWORD, password.getText()
+				.toString());
+
+		editor.commit();
+
+		// Intent i = new Intent(this, MainActivity.class);
+		// startActivity(i);
+		// if (mAuthTask != null) {
+		// return;
+		// }
 
 		// Reset errors.
 		username.setError(null);
@@ -143,10 +147,6 @@ public class LoginActivity extends Activity {
 			password.setError(getString(R.string.error_field_required));
 			focusView = password;
 			cancel = true;
-		} else if (mPassword.length() < 4) {
-			password.setError(getString(R.string.error_invalid_password));
-			focusView = password;
-			cancel = true;
 		}
 
 		// Check for a valid email address.
@@ -154,7 +154,7 @@ public class LoginActivity extends Activity {
 			username.setError(getString(R.string.error_field_required));
 			focusView = username;
 			cancel = true;
-		} 
+		}
 
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
@@ -167,12 +167,10 @@ public class LoginActivity extends Activity {
 			showProgress(true);
 			System.out.println("Check!!!!!!!!!!!!!!!!!!!");
 
-			
 			mAuthTask = new UserLoginTask();
-//			
+			//
 			mAuthTask.execute((Void) null);
-			
-			
+
 		}
 	}
 
@@ -234,16 +232,15 @@ public class LoginActivity extends Activity {
 				return false;
 			}
 
-
 			final String INNER_TAG = "getBikeDetails";
 
 			SharedPreferences prefs = getSharedPreferences(
 					ApplicationConstants.USER_PREF, 0);
-			
+
 			RestClient client = RestClientFactory
-					.getRequestClient(prefs);
-			
-//			Log.i(INNER_TAG, user_name);
+					.getAuthenticationClient(prefs);
+
+			// Log.i(INNER_TAG, user_name);
 
 			client.addParam("username", username.getText().toString());
 			client.addParam("password", password.getText().toString());
@@ -253,8 +250,9 @@ public class LoginActivity extends Activity {
 
 				if (client.getResponseCode() != 200) {
 					// return server error
-					
+
 					Log.e(INNER_TAG, client.getErrorMessage());
+					return false;
 				}
 
 				// return valid data
@@ -262,23 +260,29 @@ public class LoginActivity extends Activity {
 				Log.i(INNER_TAG, jsonResult);
 				Gson gson = new Gson();
 				System.out.println("Before fromJson");
-				Transaction restResponse = gson.fromJson(
-					      jsonResult, Transaction.class);
-					    System.out.println("After fromJson");
-					    System.out.println("restResponse..............." + restResponse.getTransaction().getAccessKey());
-					    List<Station> listofstations = restResponse.getTransaction().getStationlist();
-					    System.out.println("The Stations are : "+listofstations.get(0).getLocation());
-					    CheckinActivity.STATIONS = listofstations;
-					    CheckinActivity.UPDATEDTRANSACTION = restResponse;
-					    if (restResponse!=null){
-					    	transactions = restResponse;
-					    	
-					    }
+				User restResponse = gson
+						.fromJson(jsonResult, User.class);
+				System.out.println("After fromJson");
+				System.out.println("restResponse..............."
+						+ restResponse.getEmail());
 			} catch (Exception e) {
 				Log.e(INNER_TAG, e.toString());
 			}
 
 			// TODO: register the new account here.
+			SharedPreferences settings = getSharedPreferences(ApplicationConstants.USER_PREF, 0);
+		    SharedPreferences.Editor editor = settings.edit();
+		    editor.putString(ApplicationConstants.USERNAME, user.getUserName());
+		    editor.putString(ApplicationConstants.PASSWORD, password.getText().toString());
+		    editor.putString(ApplicationConstants.USER_EMAIL, user.getEmail());
+		    editor.putString(ApplicationConstants.USER_ROLE, user.getRole());
+		    if (user.getProgramId() != null)
+		    	editor.putLong(ApplicationConstants.USER_PROGRAM_ID, user.getProgramId());
+		    if (user.getTenantId() != null)		    
+		    editor.putLong(ApplicationConstants.USER_TENANT_ID, user.getTenantId());
+		        
+		    editor.commit();
+		     
 			return true;
 		}
 
@@ -286,20 +290,17 @@ public class LoginActivity extends Activity {
 		protected void onPostExecute(final Boolean success) {
 			mAuthTask = null;
 			showProgress(false);
-			System.out.println("Transaction Info "+transactions.getTransaction().getStationlist().get(0));
-			Intent i = new Intent(LoginActivity.this, HomeScreenActivity.class);
-			//i.putExtra(CheckinActivity.STATIONS,transactions.getTransaction().getStatus());
-			//Bundle b = new Bundle();
-			//i.putExtra("transactions", transactions);
-			startActivity(i); 
+			System.out.println("User Name " + user.getUserName());
 			if (success) {
+				Intent i = new Intent(LoginActivity.this, HomeScreenActivity.class);
+				startActivity(i);
+				
 				finish();
 			} else {
-				password.setError(getString(R.string.error_incorrect_password));
+				password.setError(getString(R.string.error_invalid_username_password));
 				password.requestFocus();
 			}
-			
-			
+
 		}
 
 		@Override

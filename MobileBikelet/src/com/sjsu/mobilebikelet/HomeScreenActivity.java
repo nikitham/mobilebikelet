@@ -1,7 +1,10 @@
 package com.sjsu.mobilebikelet;
 
+import com.sjsu.mobilebikelet.util.ApplicationConstants;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -45,6 +48,15 @@ public class HomeScreenActivity extends Activity{
 	public void clickViewTransaction(View v) {
 	    // does something very interesting
 		Intent i = new Intent(HomeScreenActivity.this, ViewTransactionActivity.class);
+		startActivity(i);
+	}
+	
+	public void signOut(View v) {
+		SharedPreferences settings = getSharedPreferences(ApplicationConstants.USER_PREF, 0);
+	    SharedPreferences.Editor editor = settings.edit();
+	    editor.clear();
+	    editor.commit();
+		Intent i = new Intent(this, WelcomeActivity.class);
 		startActivity(i);
 	}
 }
