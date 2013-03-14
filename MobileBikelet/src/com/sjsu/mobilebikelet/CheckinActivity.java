@@ -36,6 +36,7 @@ public class CheckinActivity extends Activity {
 	
 	public static Transaction UPDATEDTRANSACTION = new Transaction();
 	
+	String comments;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -83,7 +84,7 @@ public class CheckinActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				EditText commentsEdited = (EditText) findViewById(R.id.inputcomments);
-				String comments = commentsEdited.toString();
+				comments = commentsEdited.getText().toString();
 				
 				RentTransaction rentTransaction = new RentTransaction();
 				rentTransaction.setId(UPDATEDTRANSACTION.getTransaction().getId());
@@ -122,23 +123,16 @@ public class CheckinActivity extends Activity {
 					ApplicationConstants.USER_PREF, 0);
 			
 			RestClient client = RestClientFactory
-					.getRequestClient(prefs);
+					.checkinBikeClient(prefs);
 			
-			client.addParam("transaction", UPDATEDTRANSACTION.toString());
+			//client.addParam("transaction", UPDATEDTRANSACTION.toString());
+			client.addParam("toStationId",location );
+			client.addParam("comments",comments);
 			client.addParam("fromJson", "From Json");
 			
-//			Log.i(INNER_TAG, user_name);
-			
-//			client.addParam("petType", petType.getText().toString());
-//			System.out.println("User Name is ... "+userName);
-//			client.addParam("userName", userName);
-//			client.addParam("message", message.getText().toString());
-//			client.addParam("startDate", start_date.getText().toString());
-//			client.addParam("endDate", end_date.getText().toString());
-//			client.addParam("fromJson", "From Json");
-			
+
 			try {
-				client.execute(RequestMethod.POST);
+				client.execute(RequestMethod.PUT);
 
 				if (client.getResponseCode() != 200) {
 					// return server error

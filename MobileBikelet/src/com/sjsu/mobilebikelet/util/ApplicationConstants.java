@@ -12,6 +12,10 @@ public class ApplicationConstants {
 	public static String PETSITTER_SEARCH_JSON_URL = APPLICATION_HOST
 			+ "/petsitter/search/simple.json";
 	
+	public static String CHECKIN_URL = APPLICATION_HOST
+			+ "/bikelet/renttransactions/checkin";
+
+	
 	public static String PETSITTER_PETDETAIL_URL = APPLICATION_HOST
 			+ "/petsitter/petdetails/simple.json";
 

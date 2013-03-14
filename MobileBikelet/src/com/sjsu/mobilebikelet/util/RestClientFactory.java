@@ -21,6 +21,10 @@ public class RestClientFactory {
         return new RestClient (pref, ApplicationConstants.SEND_REQUEST_JSON_URL);
 	}
 	
+	public static RestClient checkinBikeClient(SharedPreferences pref) {
+        return new RestClient (pref, ApplicationConstants.CHECKIN_URL);
+	}
+
 	public static RestClient getListRequestClient(SharedPreferences pref) {
         return new RestClient (pref, ApplicationConstants.REQUESTS_URL);
 	}

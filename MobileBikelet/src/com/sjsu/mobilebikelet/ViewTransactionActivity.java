@@ -17,7 +17,9 @@ public class ViewTransactionActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_transaction);
 		Transaction transaction = CheckinActivity.UPDATEDTRANSACTION;
-				
+		//		Transaction transaction = LoginActivity.transactions;
+
+		
 		TextView bikeinfo = (TextView) findViewById(R.id.bikeinfo);
 		bikeinfo.setText(transaction.getTransaction().getBike());
 		
