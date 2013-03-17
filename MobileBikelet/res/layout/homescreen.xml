@@ -16,6 +16,7 @@
             android:layout_marginRight="50sp"
             android:layout_marginTop="50sp"
             android:clickable="true"
+            android:onClick="checkOutBike"
             android:src="@drawable/ic_launcher_ridebike" />
 
         <ImageButton
@@ -97,16 +98,16 @@
     </LinearLayout>
     
      <LinearLayout
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content" >
 
   		<ImageButton
             android:id="@+id/signoutbutton"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="30sp"
+            android:layout_marginLeft="40sp"
             android:layout_marginRight="10sp"
-            android:layout_marginTop="40sp"
+            android:layout_marginTop="10sp"
             android:layout_weight="0.04"
             android:onClick="signOut"
             android:src="@drawable/ic_exit" />

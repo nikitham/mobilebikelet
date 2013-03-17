@@ -14,5 +14,5 @@
 .settings
 target
 build
-classes\
-MobileBikelet\bin\
+MobileBikelet/bin/classes
+MobileBikelet/bin

@@ -8,32 +8,22 @@ public class ApplicationConstants {
 	
 	public static String AUTHENTICATION_JSON_URL = APPLICATION_HOST
 			+ "/bikelet/identity/authenticate.json";
+	
+	public static String GET_STATIONS_BY_PROGRAM_URL = APPLICATION_HOST
+			+ "/bikelet/stations/listStationByProgram.json";
+	
+	public static String GET_BIKES_BY_STATION_URL = APPLICATION_HOST
+			+ "/bikelet/stations/listBikeByStation.json";
 
-	public static String PETSITTER_SEARCH_JSON_URL = APPLICATION_HOST
-			+ "/petsitter/search/simple.json";
+	public static String CHECKOUT_URL = APPLICATION_HOST
+			+ "/bikelet/renttransactions/checkoutBike.json";
 	
 	public static String CHECKIN_URL = APPLICATION_HOST
 			+ "/bikelet/renttransactions/checkin";
 
-	
-	public static String PETSITTER_PETDETAIL_URL = APPLICATION_HOST
-			+ "/petsitter/petdetails/simple.json";
-
 	public static String SEND_REQUEST_JSON_URL = APPLICATION_HOST
 			+ "/bikelet/renttransactions/gettransaction.json";
 	
-	public static String REQUESTS_URL = APPLICATION_HOST
-			+ "/petsitter/requests/requestresponse.json";
-	
-	public static String REQUESTS_PICKER_URL = APPLICATION_HOST
-			+ "/petsitter/requests/simple.json";	
-	
-	public static String UPLOAD_FILE_URL = APPLICATION_HOST
-			+ "/petsitter/uploadfile";
-	
-	public static String DOWNLOAD_FILE_URL = APPLICATION_HOST
-	+ "/petsitter/uploadfile";
-
 	public static String DATE_FORMAT = "MM/dd/yyyy";
 	
 	public static String DATE_FORMAT_PRETTY = "EEE, MMM d, yyyy";

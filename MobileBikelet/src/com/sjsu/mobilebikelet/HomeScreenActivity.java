@@ -16,29 +16,17 @@ public class HomeScreenActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.homescreen);
-	
-
-	ImageButton btn = (ImageButton) findViewById(R.id.checkinbutton);
-	
-	ImageButton btn2 = (ImageButton) findViewById(R.id.transactionbutton);
-
-	btn.setOnClickListener(new View.OnClickListener() {
-	    @Override
-	    public void onClick(View v) {
-	    	checkInBike(v);
-	    }
-	});
-	
-	btn2.setOnClickListener(new View.OnClickListener() {
-	    @Override
-	    public void onClick(View v) {
-	    	clickViewTransaction(v);
-	    }
-	});
 	}
 
 	// some more code
-
+	public void checkOutBike(View v) {
+	    // does something very interesting
+		System.out.println("Checking out");
+		Intent i = new Intent(HomeScreenActivity.this, CheckoutActivity.class);
+		startActivity(i);
+	}
+	
+	
 	public void checkInBike(View v) {
 	    // does something very interesting
 		Intent i = new Intent(HomeScreenActivity.this, CheckinActivity.class);
