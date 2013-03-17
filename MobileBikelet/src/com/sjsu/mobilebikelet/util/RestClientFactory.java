@@ -9,13 +9,14 @@ public class RestClientFactory {
 		return new RestClient (pref, ApplicationConstants.AUTHENTICATION_JSON_URL);
 	}
 
-	public static RestClient getSearchPetSitterClient(SharedPreferences pref) {
-		return new RestClient (pref, ApplicationConstants.PETSITTER_SEARCH_JSON_URL);
+	public static RestClient getListStationsByProgramClient(SharedPreferences pref) {
+		return new RestClient (pref, ApplicationConstants.GET_STATIONS_BY_PROGRAM_URL);
 	}
 	
-	public static RestClient getPetSitterPetDetailClient(SharedPreferences pref) {
-        return new RestClient (pref, ApplicationConstants.PETSITTER_PETDETAIL_URL);
+	public static RestClient getListBikesByStationClient(SharedPreferences pref) {
+        return new RestClient (pref, ApplicationConstants.GET_BIKES_BY_STATION_URL);
 	}
+	
 	
 	public static RestClient getRequestClient(SharedPreferences pref) {
         return new RestClient (pref, ApplicationConstants.SEND_REQUEST_JSON_URL);
@@ -25,19 +26,8 @@ public class RestClientFactory {
         return new RestClient (pref, ApplicationConstants.CHECKIN_URL);
 	}
 
-	public static RestClient getListRequestClient(SharedPreferences pref) {
-        return new RestClient (pref, ApplicationConstants.REQUESTS_URL);
+	public static RestClient checkoutBikeClient(SharedPreferences pref) {
+        return new RestClient (pref, ApplicationConstants.CHECKOUT_URL);
 	}
-	
-	public static RestClient getRequestPickerClient(SharedPreferences pref) {
-        return new RestClient (pref, ApplicationConstants.REQUESTS_PICKER_URL);
-	}
-	
-	public static RestClient getUploadFileClient(SharedPreferences pref) {
-        return new RestClient (pref, ApplicationConstants.UPLOAD_FILE_URL);
-	}
-	public static RestClient getDownloadFileClient(SharedPreferences pref) {
-        return new RestClient (pref, ApplicationConstants.DOWNLOAD_FILE_URL);
-	}
-	//SEND_REQUEST_JSON_URL
+
 }

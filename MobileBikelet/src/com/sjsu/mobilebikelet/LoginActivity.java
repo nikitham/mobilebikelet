@@ -7,6 +7,7 @@ import com.sjsu.mobilebikelet.dto.RentTransaction;
 import com.sjsu.mobilebikelet.dto.Station;
 import com.sjsu.mobilebikelet.dto.Transaction;
 import com.sjsu.mobilebikelet.dto.User;
+import com.sjsu.mobilebikelet.dto.UserREST;
 import com.sjsu.mobilebikelet.util.RequestMethod;
 import com.sjsu.mobilebikelet.util.RestClient;
 import com.sjsu.mobilebikelet.util.RestClientFactory;
@@ -260,11 +261,10 @@ public class LoginActivity extends Activity {
 				Log.i(INNER_TAG, jsonResult);
 				Gson gson = new Gson();
 				System.out.println("Before fromJson");
-				User restResponse = gson
-						.fromJson(jsonResult, User.class);
+				UserREST restResponse = gson
+						.fromJson(jsonResult, UserREST.class);
 				System.out.println("After fromJson");
-				System.out.println("restResponse..............."
-						+ restResponse.getEmail());
+				user = restResponse.getUser();
 			} catch (Exception e) {
 				Log.e(INNER_TAG, e.toString());
 			}

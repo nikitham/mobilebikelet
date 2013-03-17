@@ -14,13 +14,22 @@ public class Station {
 		this.numberOfBikesAvailable = numberOfBikesAvailable;
 	}
 
+	private Long id ;
 	private String location;
 
    
     private String tenantId;
 
    
-    private String programId;
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	private String programId;
     
 	private Integer capacity;
 
@@ -57,5 +66,8 @@ public class Station {
 		this.capacity = capacity;
 	}
 
+	public String toString() {
+		return this.location;
+	}
 
 }
