@@ -51,6 +51,15 @@
             android:name="com.sjsu.mobilebikelet.ViewTransactionActivity"
             android:label="@string/title_activity_view_transaction" >
         </activity>
+        
+        <activity
+            android:name="com.sjsu.mobilebikelet.ViewStatsFormActivity"
+            android:label="@string/title_activity_start_form" >
+        </activity>
+        <activity
+            android:name="com.sjsu.mobilebikelet.ViewStatsActivity"
+            android:label="@string/title_view_stat" >
+        </activity>    
     </application>
 
 </manifest>

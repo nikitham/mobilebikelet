@@ -13,5 +13,12 @@
     <string name="title_activity_checkin">CheckinActivity</string>
     <string name="title_activity_checkout">CheckoutActivity</string>
     <string name="title_activity_view_transaction">ViewTransactionActivity</string>
-
+    <string name="title_about_rental">About Rental</string>
+    <string name="title_activity_start_form">Enter Trip Information</string>
+    <string name="title_view_stat">Trip Statistics</string>
+	<string-array name="tripType">
+	    <item>Leisurely</item>
+	    <item>Moderate</item>
+	    <item>Intense</item>
+	</string-array>
 </resources>

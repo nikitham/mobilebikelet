@@ -21,6 +21,8 @@ public class HomeScreenActivity extends Activity{
 	ImageButton btn = (ImageButton) findViewById(R.id.checkinbutton);
 	
 	ImageButton btn2 = (ImageButton) findViewById(R.id.transactionbutton);
+	
+	ImageButton statButton = (ImageButton) findViewById(R.id.statisticsbutton);
 
 	btn.setOnClickListener(new View.OnClickListener() {
 	    @Override
@@ -33,6 +35,13 @@ public class HomeScreenActivity extends Activity{
 	    @Override
 	    public void onClick(View v) {
 	    	clickViewTransaction(v);
+	    }
+	});
+	
+	statButton.setOnClickListener(new View.OnClickListener() {
+	    @Override
+	    public void onClick(View v) {
+	    	viewStat(v);
 	    }
 	});
 	}
@@ -58,5 +67,10 @@ public class HomeScreenActivity extends Activity{
 	    editor.commit();
 		Intent i = new Intent(this, WelcomeActivity.class);
 		startActivity(i);
+	}
+	
+	public void viewStat(View v){
+		Intent statIntent = new Intent(this, ViewStatsFormActivity.class);
+		startActivity(statIntent);
 	}
 }
