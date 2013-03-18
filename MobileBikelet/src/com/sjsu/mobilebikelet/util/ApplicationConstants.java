@@ -21,7 +21,7 @@ public class ApplicationConstants {
 	public static String CHECKIN_URL = APPLICATION_HOST
 			+ "/bikelet/renttransactions/checkin";
 
-	public static String SEND_REQUEST_JSON_URL = APPLICATION_HOST
+	public static String GET_TRANSACTION_URL = APPLICATION_HOST
 			+ "/bikelet/renttransactions/gettransaction.json";
 	
 	public static String DATE_FORMAT = "MM/dd/yyyy";

@@ -3,6 +3,22 @@ package com.sjsu.mobilebikelet;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+
+import com.sjsu.mobilebikelet.adapter.StationsByProgramAdapter;
 import com.sjsu.mobilebikelet.dto.RentTransaction;
 import com.sjsu.mobilebikelet.dto.Station;
 import com.sjsu.mobilebikelet.dto.Transaction;
@@ -11,29 +27,12 @@ import com.sjsu.mobilebikelet.util.RequestMethod;
 import com.sjsu.mobilebikelet.util.RestClient;
 import com.sjsu.mobilebikelet.util.RestClientFactory;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
-
 public class CheckinActivity extends Activity {
 
 	public static String location;
 
-	public static List<Station> STATIONS = new ArrayList<Station>();
-	
+	public final List<Station> STATIONS = new ArrayList<Station>();
+	SharedPreferences prefs;
 	public static Transaction UPDATEDTRANSACTION = new Transaction();
 	
 	String comments;
@@ -42,14 +41,11 @@ public class CheckinActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_checkin);
 		
-		String[] array_spinner=new String[STATIONS.size()];
-		for (int i = 0; i < array_spinner.length;i++){
-			array_spinner[i] = STATIONS.get(i).getLocation();
-		}
+		prefs = getSharedPreferences(ApplicationConstants.USER_PREF, 0);
 		Spinner s = (Spinner) findViewById(R.id.checkinstationspinner);
-		ArrayAdapter adapter = new ArrayAdapter(this,
-		android.R.layout.simple_spinner_item, array_spinner);
-		s.setAdapter(adapter);
+		
+		final StationsByProgramAdapter adapter1 = new StationsByProgramAdapter(this, prefs, STATIONS);
+		s.setAdapter(adapter1);
 		
 		s.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -86,7 +82,7 @@ public class CheckinActivity extends Activity {
 				EditText commentsEdited = (EditText) findViewById(R.id.inputcomments);
 				comments = commentsEdited.getText().toString();
 				
-				RentTransaction rentTransaction = new RentTransaction();
+/*				RentTransaction rentTransaction = new RentTransaction();
 				rentTransaction.setId(UPDATEDTRANSACTION.getTransaction().getId());
 				//UPDATEDTRANSACTION.getTransaction().getBike();
 				rentTransaction.setBike(UPDATEDTRANSACTION.getTransaction().getBike());
@@ -102,7 +98,7 @@ public class CheckinActivity extends Activity {
 				
 				System.out.println("Updated Transaction is :" +updtrans.getTransaction().getComments());
 				
-				UPDATEDTRANSACTION = updtrans;
+				UPDATEDTRANSACTION = updtrans;*/
 				checkinUpdatedInfo(v);
 				
 			}

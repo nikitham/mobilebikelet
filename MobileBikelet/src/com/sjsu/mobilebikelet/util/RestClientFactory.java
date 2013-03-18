@@ -18,8 +18,8 @@ public class RestClientFactory {
 	}
 	
 	
-	public static RestClient getRequestClient(SharedPreferences pref) {
-        return new RestClient (pref, ApplicationConstants.SEND_REQUEST_JSON_URL);
+	public static RestClient getTransactionClient(SharedPreferences pref) {
+        return new RestClient (pref, ApplicationConstants.GET_TRANSACTION_URL);
 	}
 	
 	public static RestClient checkinBikeClient(SharedPreferences pref) {

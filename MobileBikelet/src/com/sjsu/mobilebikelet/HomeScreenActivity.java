@@ -1,16 +1,28 @@
 package com.sjsu.mobilebikelet;
 
+import com.google.gson.Gson;
+import com.sjsu.mobilebikelet.dto.RentTransaction;
+import com.sjsu.mobilebikelet.dto.Transaction;
+import com.sjsu.mobilebikelet.dto.UserREST;
 import com.sjsu.mobilebikelet.util.ApplicationConstants;
+import com.sjsu.mobilebikelet.util.RequestMethod;
+import com.sjsu.mobilebikelet.util.RestClient;
+import com.sjsu.mobilebikelet.util.RestClientFactory;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+@SuppressLint("ShowToast")
 public class HomeScreenActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +41,8 @@ public class HomeScreenActivity extends Activity{
 	
 	public void checkInBike(View v) {
 	    // does something very interesting
-		Intent i = new Intent(HomeScreenActivity.this, CheckinActivity.class);
-		startActivity(i);
+		GetTransactionTask gtask = new GetTransactionTask();
+		gtask.execute((Void) null);
 	}
 	
 	public void clickViewTransaction(View v) {
@@ -53,4 +65,64 @@ public class HomeScreenActivity extends Activity{
 		Intent i = new Intent(this, WelcomeActivity.class);
 		startActivity(i);
 	}
+	
+	public class GetTransactionTask extends AsyncTask<Void, Void, Boolean> {
+		@Override
+		protected Boolean doInBackground(Void... params) {
+
+			RentTransaction rtrans = new RentTransaction();
+			Transaction trans = new Transaction();
+			final String INNER_TAG = "gettransaction";
+
+			SharedPreferences prefs = getSharedPreferences(
+					ApplicationConstants.USER_PREF, 0);
+
+			RestClient client = RestClientFactory
+					.getTransactionClient(prefs);
+
+			try {
+				client.execute(RequestMethod.GET);
+
+				if (client.getResponseCode() != 200) {
+					// return server error
+					Log.e(INNER_TAG, client.getErrorMessage());
+					return false;
+				}
+
+				String jsonResult = client.getResponse();
+				Log.i(INNER_TAG, jsonResult);
+				Gson gson = new Gson();
+				trans = gson.fromJson(jsonResult, Transaction.class);
+				rtrans = trans.getTransaction();
+
+			} catch (Exception e) {
+				Log.e(INNER_TAG, e.toString());
+			}
+
+			if(rtrans != null)
+				return true;
+			else
+				return false;
+		}
+
+		@Override
+		protected void onPostExecute(final Boolean success) {
+			if (success) {
+				Toast.makeText(HomeScreenActivity.this, "Bike Checked out", Toast.LENGTH_LONG).show();
+				Intent i = new Intent(HomeScreenActivity.this, CheckinActivity.class);
+				startActivity(i);
+				
+				finish();
+			} else {
+				Toast.makeText(HomeScreenActivity.this, "No Bike Checked out", Toast.LENGTH_LONG).show();
+			}
+
+		}
+
+		@Override
+		protected void onCancelled() {
+
+		}
+	}
+
 }
