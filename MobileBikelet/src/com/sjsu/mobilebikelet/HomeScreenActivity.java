@@ -39,6 +39,12 @@ public class HomeScreenActivity extends Activity{
 		startActivity(i);
 	}
 	
+	public void clickViewStatistics(View v) {
+		// does something very interesting
+		Intent i = new Intent(HomeScreenActivity.this, ViewStatsFormActivity.class);
+		startActivity(i);
+	}
+	
 	public void signOut(View v) {
 		SharedPreferences settings = getSharedPreferences(ApplicationConstants.USER_PREF, 0);
 	    SharedPreferences.Editor editor = settings.edit();
