@@ -1,5 +1,8 @@
 package com.sjsu.mobilebikelet;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import com.sjsu.mobilebikelet.dto.Transaction;
 
 import android.app.Activity;
@@ -70,8 +73,10 @@ public class ViewStatsFormActivity extends Activity {
 				double co2Saved = calculateCo2Saved(Integer.parseInt(minutes), Double.parseDouble(distanceCoveredStr));
 				
 				Intent intent = new Intent(ViewStatsFormActivity.this, ViewStatsActivity.class);
-                intent.putExtra("caloriesBurned", calorieBurned);
-                intent.putExtra("co2Saved", co2Saved);
+                
+                DecimalFormat df = new DecimalFormat("#.00");
+                intent.putExtra("caloriesBurned", df.format(calorieBurned));
+                intent.putExtra("co2Saved", df.format(co2Saved));
                 startActivity(intent);
 				
 			}
