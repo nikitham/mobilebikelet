@@ -46,8 +46,9 @@ public class HomeScreenActivity extends Activity{
 	
 	public void clickViewTransaction(View v) {
 	    // does something very interesting
-		Intent i = new Intent(HomeScreenActivity.this, ViewTransactionActivity.class);
-		startActivity(i);
+		ViewTransactionTask gtask = new ViewTransactionTask();
+		gtask.execute((Void) null);
+		
 	}
 	
 	public void clickViewStatistics(View v) {
@@ -93,6 +94,8 @@ public class HomeScreenActivity extends Activity{
 				Gson gson = new Gson();
 				trans = gson.fromJson(jsonResult, Transaction.class);
 				rtrans = trans.getTransaction();
+				CheckinActivity.UPDATEDTRANSACTION = trans;
+				//ViewTransactionActivity.STATUS = trans.getTransaction().getStatus();
 
 			} catch (Exception e) {
 				Log.e(INNER_TAG, e.toString());
@@ -173,6 +176,68 @@ public class HomeScreenActivity extends Activity{
 				finish();
 			} else {
 				Toast.makeText(HomeScreenActivity.this, "Please checkin the already checked out bike before checking out new bike.", Toast.LENGTH_LONG).show();
+			}
+
+		}
+
+		@Override
+		protected void onCancelled() {
+
+		}
+	}
+	
+	public class ViewTransactionTask extends AsyncTask<Void, Void, Boolean> {
+		@Override
+		protected Boolean doInBackground(Void... params) {
+
+			RentTransaction rtrans = new RentTransaction();
+			Transaction trans = new Transaction();
+			final String INNER_TAG = "viewtransaction";
+
+			SharedPreferences prefs = getSharedPreferences(
+					ApplicationConstants.USER_PREF, 0);
+
+			RestClient client = RestClientFactory
+					.getViewTransactionClient(prefs);
+
+			try {
+				client.execute(RequestMethod.GET);
+
+				if (client.getResponseCode() != 200) {
+					// return server error
+					Log.e(INNER_TAG, client.getErrorMessage());
+					return false;
+				}
+
+				String jsonResult = client.getResponse();
+				Log.i(INNER_TAG, jsonResult);
+				Gson gson = new Gson();
+				trans = gson.fromJson(jsonResult, Transaction.class);
+				rtrans = trans.getTransaction();
+				System.out.println("Detecting Problem   ...... 1 ");
+				CheckinActivity.UPDATEDTRANSACTION = trans;
+				//ViewTransactionActivity.STATUS = trans.getTransaction().getStatus();
+				ViewTransactionActivity.viewTransaction = rtrans;
+
+			} catch (Exception e) {
+				Log.e(INNER_TAG, e.toString());
+			}
+
+			if(rtrans != null){
+				System.out.println("Detecting Problem   ...... 121212 ");
+				return true;
+			}
+			else
+				return false;
+		}
+
+		@Override
+		protected void onPostExecute(final Boolean success) {
+			if (success) {
+				System.out.println("Detecting Problem   ...... 131313 ");
+				Intent i = new Intent(HomeScreenActivity.this, ViewTransactionActivity.class);
+				System.out.println("Detecting Problem   ...... 14141414 ");
+				startActivity(i);
 			}
 
 		}

@@ -81,8 +81,10 @@ public class CheckinActivity extends Activity {
 				// TODO Auto-generated method stub
 				EditText commentsEdited = (EditText) findViewById(R.id.inputcomments);
 				comments = commentsEdited.getText().toString();
+//				RentTransaction rt = new RentTransaction();
+//				rt.setToStation(location);
 				
-/*				RentTransaction rentTransaction = new RentTransaction();
+				RentTransaction rentTransaction = new RentTransaction();
 				rentTransaction.setId(UPDATEDTRANSACTION.getTransaction().getId());
 				//UPDATEDTRANSACTION.getTransaction().getBike();
 				rentTransaction.setBike(UPDATEDTRANSACTION.getTransaction().getBike());
@@ -97,8 +99,9 @@ public class CheckinActivity extends Activity {
 				updtrans.setTransaction(rentTransaction);
 				
 				System.out.println("Updated Transaction is :" +updtrans.getTransaction().getComments());
-				
-				UPDATEDTRANSACTION = updtrans;*/
+				//ViewTransactionActivity.STATUS = "Complete";
+
+				UPDATEDTRANSACTION = updtrans;
 				checkinUpdatedInfo(v);
 				
 			}
@@ -135,6 +138,9 @@ public class CheckinActivity extends Activity {
 					Log.e(INNER_TAG, client.getErrorMessage());
 					
 					//checkinUpdatedInfo(v);
+				}
+				else {
+					//ViewTransactionActivity.STATUS = "Complete";
 				}
 				// return valid data
 			} catch (Exception e) {

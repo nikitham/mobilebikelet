@@ -12,6 +12,9 @@ public class ApplicationConstants {
 	public static String GET_STATIONS_BY_PROGRAM_URL = APPLICATION_HOST
 			+ "/bikelet/stations/listStationByProgram.json";
 	
+	public static String GET_LAST_TRANSACTION_URL = APPLICATION_HOST
+			+ "/bikelet/renttransactions/viewtransaction.json";
+	
 	public static String GET_BIKES_BY_STATION_URL = APPLICATION_HOST
 			+ "/bikelet/stations/listBikeByStation.json";
 

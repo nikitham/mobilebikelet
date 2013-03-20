@@ -46,6 +46,7 @@ public class CheckoutActivity extends Activity {
 	final List<Bike> bikes = new ArrayList<Bike>();
 	private RentTransaction transaction;
 	private Handler threadHandler;
+	public static Transaction CHECKEDOUTTRANSACTION = new Transaction();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -180,6 +181,8 @@ public class CheckoutActivity extends Activity {
 						.println("restResponse..............." + restResponse);
 				if (restResponse.getTransaction() != null) {
 					transaction = restResponse.getTransaction();
+					//ViewTransactionActivity.STATUS = transaction.getStatus();
+					
 				}
 			} catch (Exception e) {
 				Log.e(INNER_TAG, e.toString());
