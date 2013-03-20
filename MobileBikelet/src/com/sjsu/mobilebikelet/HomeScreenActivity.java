@@ -33,9 +33,8 @@ public class HomeScreenActivity extends Activity{
 	// some more code
 	public void checkOutBike(View v) {
 	    // does something very interesting
-		System.out.println("Checking out");
-		Intent i = new Intent(HomeScreenActivity.this, CheckoutActivity.class);
-		startActivity(i);
+		ValidateCheckoutTask validateTask = new ValidateCheckoutTask();
+		validateTask.execute((Void) null);
 	}
 	
 	
@@ -115,6 +114,65 @@ public class HomeScreenActivity extends Activity{
 				finish();
 			} else {
 				Toast.makeText(HomeScreenActivity.this, "No Bike Checked out", Toast.LENGTH_LONG).show();
+			}
+
+		}
+
+		@Override
+		protected void onCancelled() {
+
+		}
+	}
+	
+	public class ValidateCheckoutTask extends AsyncTask<Void, Void, Boolean> {
+		@Override
+		protected Boolean doInBackground(Void... params) {
+
+			RentTransaction rtrans = new RentTransaction();
+			Transaction trans = new Transaction();
+			final String INNER_TAG = "gettransaction";
+
+			SharedPreferences prefs = getSharedPreferences(
+					ApplicationConstants.USER_PREF, 0);
+
+			RestClient client = RestClientFactory
+					.getTransactionClient(prefs);
+
+			try {
+				client.execute(RequestMethod.GET);
+
+				if (client.getResponseCode() != 200) {
+					// return server error
+					Log.e(INNER_TAG, client.getErrorMessage());
+					return false;
+				}
+
+				String jsonResult = client.getResponse();
+				Log.i(INNER_TAG, jsonResult);
+				Gson gson = new Gson();
+				trans = gson.fromJson(jsonResult, Transaction.class);
+				rtrans = trans.getTransaction();
+
+			} catch (Exception e) {
+				Log.e(INNER_TAG, e.toString());
+			}
+
+			if(rtrans == null)
+				return true;
+			else
+				return false;
+		}
+
+		@Override
+		protected void onPostExecute(final Boolean success) {
+			if (success) {
+				Intent i = new Intent(HomeScreenActivity.this, CheckoutActivity.class);
+				startActivity(i);
+
+				
+				finish();
+			} else {
+				Toast.makeText(HomeScreenActivity.this, "Please checkin the already checked out bike before checking out new bike.", Toast.LENGTH_LONG).show();
 			}
 
 		}
