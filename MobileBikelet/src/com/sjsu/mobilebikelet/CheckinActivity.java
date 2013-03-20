@@ -81,12 +81,8 @@ public class CheckinActivity extends Activity {
 				// TODO Auto-generated method stub
 				EditText commentsEdited = (EditText) findViewById(R.id.inputcomments);
 				comments = commentsEdited.getText().toString();
-//				RentTransaction rt = new RentTransaction();
-//				rt.setToStation(location);
-				
 				RentTransaction rentTransaction = new RentTransaction();
 				rentTransaction.setId(UPDATEDTRANSACTION.getTransaction().getId());
-				//UPDATEDTRANSACTION.getTransaction().getBike();
 				rentTransaction.setBike(UPDATEDTRANSACTION.getTransaction().getBike());
 				rentTransaction.setAccessKey(UPDATEDTRANSACTION.getTransaction().getAccessKey());
 				rentTransaction.setComments(comments);

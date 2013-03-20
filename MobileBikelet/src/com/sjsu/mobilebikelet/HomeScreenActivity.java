@@ -95,7 +95,6 @@ public class HomeScreenActivity extends Activity{
 				trans = gson.fromJson(jsonResult, Transaction.class);
 				rtrans = trans.getTransaction();
 				CheckinActivity.UPDATEDTRANSACTION = trans;
-				//ViewTransactionActivity.STATUS = trans.getTransaction().getStatus();
 
 			} catch (Exception e) {
 				Log.e(INNER_TAG, e.toString());
@@ -216,7 +215,6 @@ public class HomeScreenActivity extends Activity{
 				rtrans = trans.getTransaction();
 				System.out.println("Detecting Problem   ...... 1 ");
 				CheckinActivity.UPDATEDTRANSACTION = trans;
-				//ViewTransactionActivity.STATUS = trans.getTransaction().getStatus();
 				ViewTransactionActivity.viewTransaction = rtrans;
 
 			} catch (Exception e) {
