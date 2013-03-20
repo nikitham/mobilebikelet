@@ -2,6 +2,8 @@ package com.sjsu.mobilebikelet;
 
 import java.util.List;
 
+import org.apache.http.conn.ConnectTimeoutException;
+
 import com.google.gson.Gson;
 import com.sjsu.mobilebikelet.dto.RentTransaction;
 import com.sjsu.mobilebikelet.dto.Station;
@@ -66,6 +68,8 @@ public class LoginActivity extends Activity {
 	private View mLoginStatusView;
 	private TextView mLoginStatusMessageView;
 
+	private String errorMsg;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -253,6 +257,8 @@ public class LoginActivity extends Activity {
 					// return server error
 
 					Log.e(INNER_TAG, client.getErrorMessage());
+					
+					errorMsg = getString(R.string.error_invalid_username_password);
 					return false;
 				}
 
@@ -266,7 +272,8 @@ public class LoginActivity extends Activity {
 				System.out.println("After fromJson");
 				user = restResponse.getUser();
 			} catch (Exception e) {
-				Log.e(INNER_TAG, e.toString());
+				errorMsg = "User cannot be authenticated. Please try again later.";
+				return false;
 			}
 
 			// TODO: register the new account here.
@@ -297,7 +304,7 @@ public class LoginActivity extends Activity {
 				
 				finish();
 			} else {
-				password.setError(getString(R.string.error_invalid_username_password));
+				password.setError(errorMsg);
 				password.requestFocus();
 			}
 
