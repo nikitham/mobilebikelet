@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,16 +29,18 @@ public class WelcomeActivity extends Activity {
     	SharedPreferences prefs = getSharedPreferences(
 				ApplicationConstants.USER_PREF, 0);
     	String username = prefs.getString(ApplicationConstants.USERNAME, "");
-    	
+    	//Typeface tf = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/Georgia.TTF");
     	TextView welcomeUser = (TextView) findViewById(R.id.welcomeUser);
+    	//welcomeUser.setTypeface(tf);
     	Button signIn = (Button) findViewById(R.id.welcomeUserButton);
     	Button okayButton = (Button) findViewById(R.id.welcomeOKButton);
     	if (username == null || username.length() ==0) {
     		welcomeUser.setText("PLEASE SIGN IN");
-    		okayButton.setVisibility(View.INVISIBLE);    		
+    		okayButton.setVisibility(View.INVISIBLE); 
+    		
     	} else {
-    		welcomeUser.setText("WELCOME " +  username + "!");
-    		signIn.setText("SIGN IN AS DIFFERENT USER");
+    		welcomeUser.setText("Welcome " +  username + "!");
+    		signIn.setText("Sign in as Different User");
     	}
     }
 	

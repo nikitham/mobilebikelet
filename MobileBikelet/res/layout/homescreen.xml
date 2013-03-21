@@ -1,7 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@drawable/greenbackground">
 
 
     <LinearLayout
@@ -38,29 +39,33 @@
 
         <TextView
             android:id="@+id/heading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:text="Check Out Bike"
+            android:layout_width="87dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="30sp"
+            android:gravity="center"
             android:shadowColor="#00CD00"
-        android:shadowDx="0.0"
-        android:shadowDy="0.0"
-        android:shadowRadius="8"
-        android:textColor="#00CD00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="8"
+            android:text="Check Out Bike"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/checkintext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70sp"
-            android:text="Check In Bike"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="100sp"
+            android:gravity="center"
             android:shadowColor="#00CD00"
-        android:shadowDx="0.0"
-        android:shadowDy="0.0"
-        android:shadowRadius="8"
-        android:textColor="#00CD00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="8"
+            android:text="Check In Bike"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -99,13 +104,15 @@
             android:layout_width="125dp"
             android:layout_height="42dp"
             android:layout_marginLeft="10sp"
-            android:text="View Latest Transaction"
+            android:gravity="center"
             android:shadowColor="#00CD00"
-        android:shadowDx="0.0"
-        android:shadowDy="0.0"
-        android:shadowRadius="8"
-        android:textColor="#00CD00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="8"
+            android:text="View Latest Transaction"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/statisticstext"
@@ -113,13 +120,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="70sp"
-            android:text="View Statistics"
+            android:gravity="center"
             android:shadowColor="#00CD00"
-        android:shadowDx="0.0"
-        android:shadowDy="0.0"
-        android:shadowRadius="8"
-        android:textColor="#00CD00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="8"
+            android:text="View Health Statistics"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
 
     </LinearLayout>
     
@@ -128,17 +137,16 @@
         android:layout_height="wrap_content" >
 
   		<ImageButton
-            android:id="@+id/signoutbutton"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="40sp"
-            android:layout_marginRight="10sp"
-            android:layout_marginTop="10sp"
-            android:layout_weight="0.04"
-            android:background="@null"
-            android:onClick="signOut"
-            android:src="@drawable/ic_exit" />
-
+  		    android:id="@+id/signoutbutton"
+  		    android:layout_width="wrap_content"
+  		    android:layout_height="wrap_content"
+  		     android:layout_marginLeft="30sp"
+  		    android:layout_marginRight="10sp"
+  		    android:layout_marginTop="30sp"
+  		    
+  		    android:background="@null"
+  		    android:onClick="signOut"
+  		    android:src="@drawable/ic_exit" />
 
     </LinearLayout>
 
@@ -152,8 +160,9 @@
             android:layout_height="42dp"
             android:layout_marginLeft="10sp"
             android:text="Sign Out"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp" />
      
     </LinearLayout>
     
