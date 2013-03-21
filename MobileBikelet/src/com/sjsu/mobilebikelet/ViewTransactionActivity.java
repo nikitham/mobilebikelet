@@ -38,6 +38,9 @@ public class ViewTransactionActivity extends Activity {
 		checkintime.setText(transaction.getTransaction().getRentEndDate());
 		
 		
+		TextView transactionCharges = (TextView) findViewById(R.id.transactioncharges);
+		transactionCharges.setText(transaction.getTransaction().getBillDetails());
+		
 		
 		System.out.println("Detecting Problem   ...... 4 "+transaction.getTransaction().getRentEndDate());
 		Button button = (Button) findViewById(R.id.okbutton);

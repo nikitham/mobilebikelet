@@ -16,6 +16,7 @@
             android:layout_marginRight="50sp"
             android:layout_marginTop="50sp"
             android:clickable="true"
+            android:background="@null"
             android:onClick="checkOutBike"
             android:src="@drawable/ic_launcher_ridebike" />
 
@@ -27,6 +28,7 @@
             android:layout_marginRight="50sp"
             android:layout_marginTop="50sp"
             android:onClick="checkInBike"
+            android:background="@null"
             android:src="@drawable/ic_launcher_bikerack" />
     </LinearLayout>
 
@@ -40,6 +42,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10sp"
             android:text="Check Out Bike"
+            android:shadowColor="#00CD00"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="8"
+        android:textColor="#00CD00"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -48,6 +55,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="70sp"
             android:text="Check In Bike"
+            android:shadowColor="#00CD00"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="8"
+        android:textColor="#00CD00"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
@@ -63,6 +75,7 @@
             android:layout_marginRight="50sp"
             android:layout_marginTop="70sp"
             android:onClick="clickViewTransaction"
+            android:background="@null"
             android:src="@drawable/ic_launcher_renttransactions" />
 
         <ImageButton
@@ -72,6 +85,7 @@
             android:layout_marginLeft="60sp"
             android:layout_marginRight="50sp"
             android:layout_marginTop="70sp"
+            android:background="@null"
             android:onClick="clickViewStatistics"
             android:src="@drawable/ic_stat_calc" />
     </LinearLayout>
@@ -86,15 +100,27 @@
             android:layout_height="42dp"
             android:layout_marginLeft="10sp"
             android:text="View Latest Transaction"
+            android:shadowColor="#00CD00"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="8"
+        android:textColor="#00CD00"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/statisticstext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="70sp"
             android:text="View Statistics"
+            android:shadowColor="#00CD00"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="8"
+        android:textColor="#00CD00"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
     </LinearLayout>
     
      <LinearLayout
@@ -109,6 +135,7 @@
             android:layout_marginRight="10sp"
             android:layout_marginTop="10sp"
             android:layout_weight="0.04"
+            android:background="@null"
             android:onClick="signOut"
             android:src="@drawable/ic_exit" />
 

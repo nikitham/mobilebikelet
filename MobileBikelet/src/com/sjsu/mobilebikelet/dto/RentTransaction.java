@@ -24,9 +24,19 @@ public class RentTransaction {
 	private String accessKey;
 	
 	private List<Station> stationList; 
+	
+	private String billDetails;
     
     
-    public List<Station> getStationlist() {
+    public String getBillDetails() {
+		return billDetails;
+	}
+
+	public void setBillDetails(String billDetails) {
+		this.billDetails = billDetails;
+	}
+
+	public List<Station> getStationlist() {
 		return stationList;
 	}
 
