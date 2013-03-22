@@ -21,7 +21,6 @@ public class RestClientFactory {
         return new RestClient (pref, ApplicationConstants.GET_LAST_TRANSACTION_URL);
 	}
 	
-	
 	public static RestClient getTransactionClient(SharedPreferences pref) {
         return new RestClient (pref, ApplicationConstants.GET_TRANSACTION_URL);
 	}
@@ -32,6 +31,10 @@ public class RestClientFactory {
 
 	public static RestClient checkoutBikeClient(SharedPreferences pref) {
         return new RestClient (pref, ApplicationConstants.CHECKOUT_URL);
+	}
+	
+	public static RestClient checkStationClient(SharedPreferences pref) {
+        return new RestClient (pref, ApplicationConstants.CHECK_STATIONFULL_URL);
 	}
 
 }

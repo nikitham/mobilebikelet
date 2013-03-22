@@ -3,9 +3,13 @@ package com.sjsu.mobilebikelet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
+import org.json.JSONStringer;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,11 +17,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.sjsu.mobilebikelet.adapter.StationsByProgramAdapter;
 import com.sjsu.mobilebikelet.dto.RentTransaction;
 import com.sjsu.mobilebikelet.dto.Station;
@@ -30,7 +35,7 @@ import com.sjsu.mobilebikelet.util.RestClientFactory;
 public class CheckinActivity extends Activity {
 
 	public static String location;
-
+	public static Long stationId;
 	public final List<Station> STATIONS = new ArrayList<Station>();
 	SharedPreferences prefs;
 	public static Transaction UPDATEDTRANSACTION = new Transaction();
@@ -53,7 +58,16 @@ public class CheckinActivity extends Activity {
 	        public void onItemSelected(AdapterView<?> parent,
 	                View view, int pos, long id) {
 	        	location = parent.getItemAtPosition(pos).toString();
+	        	for (int i = 0; i < STATIONS.size() ;i++){
+	    			if(STATIONS.get(i).getLocation().equalsIgnoreCase(location)){
+	    				stationId = STATIONS.get(i).getId();
+	    				break;
+	    			}
+	    		}
+	        	System.out.println("Printing stationId ...... "+stationId);
 	        	System.out.println("Printing location of the selected station :" +location);
+	        	CheckStationTask gtask = new CheckStationTask();
+	    		gtask.execute((Void) null);
 	        }
 
 	        @Override
@@ -157,4 +171,65 @@ public class CheckinActivity extends Activity {
 		return true;
 	}
 
+	
+	public class CheckStationTask extends AsyncTask<Void, Void, Boolean> {
+		@Override
+		protected Boolean doInBackground(Void... params) {
+
+			String isStationFull = "true";
+			Boolean stationFull = true;
+			final String INNER_TAG = "checkstationfull";
+
+			SharedPreferences prefs = getSharedPreferences(
+					ApplicationConstants.USER_PREF, 0);
+
+			RestClient client = RestClientFactory
+					.checkStationClient(prefs);
+			client.addParam("stationId", stationId.toString());
+			
+			try {
+				client.execute(RequestMethod.GET);
+
+				if (client.getResponseCode() != 200) {
+					// return server error
+					Log.e(INNER_TAG, client.getErrorMessage());
+					return false;
+				}
+
+				isStationFull = client.getResponse();
+				Log.i(INNER_TAG, isStationFull);
+				
+				JSONObject json = new JSONObject(isStationFull);
+				isStationFull = (String) json.get("isStationFull");
+				System.out.println("isStationFull is .......... "+isStationFull);
+
+			} catch (Exception e) {
+				Log.e(INNER_TAG, e.toString());
+			}
+
+			if(isStationFull.equalsIgnoreCase("true"))
+				return true;
+			else
+				return false;
+		}
+
+		@Override
+		protected void onPostExecute(final Boolean success) {
+			Button checkin = (Button) findViewById(R.id.checkinginbutton);
+			if (success) {
+				Toast.makeText(CheckinActivity.this, "Station is full", Toast.LENGTH_LONG).show();
+	        	checkin.setClickable(false);
+//				finish();
+			} else {
+				Toast.makeText(CheckinActivity.this, "Station is not full", Toast.LENGTH_LONG).show();
+	        	checkin.setClickable(true);
+//				finish();
+			}
+		}
+
+		@Override
+		protected void onCancelled() {
+
+		}
+	}	
 }

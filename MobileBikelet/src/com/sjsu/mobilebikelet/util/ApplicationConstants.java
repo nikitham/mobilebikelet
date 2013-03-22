@@ -4,7 +4,7 @@ public class ApplicationConstants {
 
 	public static String USER_PREF = "USER_PREF";
 
-	public static String APPLICATION_HOST = "http://10.0.2.2:8080";
+	public static String APPLICATION_HOST = "http://192.168.1.111:8080";
 	
 	public static String AUTHENTICATION_JSON_URL = APPLICATION_HOST
 			+ "/bikelet/identity/authenticate.json";
@@ -26,6 +26,9 @@ public class ApplicationConstants {
 
 	public static String GET_TRANSACTION_URL = APPLICATION_HOST
 			+ "/bikelet/renttransactions/gettransaction.json";
+	
+	public static String CHECK_STATIONFULL_URL = APPLICATION_HOST
+			+ "/bikelet/stations/checkstationfull.json";
 	
 	public static String DATE_FORMAT = "MM/dd/yyyy";
 	
