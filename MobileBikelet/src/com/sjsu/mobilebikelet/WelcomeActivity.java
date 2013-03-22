@@ -29,9 +29,11 @@ public class WelcomeActivity extends Activity {
     	SharedPreferences prefs = getSharedPreferences(
 				ApplicationConstants.USER_PREF, 0);
     	String username = prefs.getString(ApplicationConstants.USERNAME, "");
-    	//Typeface tf = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/Georgia.TTF");
+    	Typeface tf = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/Georgia.TTF");
+    	TextView welcome = (TextView) findViewById(R.id.welcome);
+    	welcome.setTypeface(tf);
     	TextView welcomeUser = (TextView) findViewById(R.id.welcomeUser);
-    	//welcomeUser.setTypeface(tf);
+    	welcomeUser.setTypeface(tf);
     	Button signIn = (Button) findViewById(R.id.welcomeUserButton);
     	Button okayButton = (Button) findViewById(R.id.welcomeOKButton);
     	if (username == null || username.length() ==0) {
