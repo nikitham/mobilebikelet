@@ -7,10 +7,14 @@ import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -39,7 +43,7 @@ public class CheckinActivity extends Activity {
 	public final List<Station> STATIONS = new ArrayList<Station>();
 	SharedPreferences prefs;
 	public static Transaction UPDATEDTRANSACTION = new Transaction();
-	
+	private Handler threadHandler;
 	String comments;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +68,8 @@ public class CheckinActivity extends Activity {
 	    				break;
 	    			}
 	    		}
-	        	System.out.println("Printing stationId ...... "+stationId);
-	        	System.out.println("Printing location of the selected station :" +location);
 	        	CheckStationTask gtask = new CheckStationTask();
-	    		gtask.execute((Void) null);
+	    		gtask.execute((Void) null); 
 	        }
 
 	        @Override
@@ -95,37 +97,18 @@ public class CheckinActivity extends Activity {
 				// TODO Auto-generated method stub
 				EditText commentsEdited = (EditText) findViewById(R.id.inputcomments);
 				comments = commentsEdited.getText().toString();
-				RentTransaction rentTransaction = new RentTransaction();
-				rentTransaction.setId(UPDATEDTRANSACTION.getTransaction().getId());
-				rentTransaction.setBike(UPDATEDTRANSACTION.getTransaction().getBike());
-				rentTransaction.setAccessKey(UPDATEDTRANSACTION.getTransaction().getAccessKey());
-				rentTransaction.setComments(comments);
-				rentTransaction.setFromStation(UPDATEDTRANSACTION.getTransaction().getFromStation());
-				rentTransaction.setToStation(location);
-				rentTransaction.setRentStartDate(UPDATEDTRANSACTION.getTransaction().getRentStartDate());
-				rentTransaction.setStatus("Completed");
-				rentTransaction.setRentEndDate(UPDATEDTRANSACTION.getTransaction().getRentEndDate());
-				Transaction updtrans = new Transaction();
-				updtrans.setTransaction(rentTransaction);
-				
-				System.out.println("Updated Transaction is :" +updtrans.getTransaction().getComments());
-				//ViewTransactionActivity.STATUS = "Complete";
-
-				UPDATEDTRANSACTION = updtrans;
 				checkinUpdatedInfo(v);
 				
 			}
 		});
-		
-		
-		
 		
 	}
 	
 	class DataThread extends Thread {
 
 		private static final String INNER_TAG = "getCheckinDetails";
-
+		private String status = "";
+		
 		public void run() {
 
 			SharedPreferences prefs = getSharedPreferences(
@@ -139,28 +122,60 @@ public class CheckinActivity extends Activity {
 			client.addParam("comments",comments);
 			client.addParam("fromJson", "From Json");
 			
+			System.out.println("Comments ........ "+comments);
+			System.out.println("Location ........ "+location);
 
 			try {
-				client.execute(RequestMethod.PUT);
+				client.execute(RequestMethod.POST);
 
 				if (client.getResponseCode() != 200) {
 					// return server error
 					Log.e(INNER_TAG, client.getErrorMessage());
-					
-					//checkinUpdatedInfo(v);
 				}
-				else {
-					//ViewTransactionActivity.STATUS = "Complete";
-				}
-				// return valid data
+				
+				String response = client.getResponse();
+				System.out.println("Response is ........ "+response);
+				
+				JSONObject json = new JSONObject(response);
+				status = (String) json.get("status");
+				
+				
+				System.out.println("Status is ......... "+status);
+				
 			} catch (Exception e) {
 				Log.e(INNER_TAG, e.toString());
 			}
+			
+			// Send the parsing result to the handler.
+			Message dataMsg = threadHandler.obtainMessage();
+			dataMsg.obj = status;
+			threadHandler.sendMessage(dataMsg);
 		}
 	}
 
 	public void checkinUpdatedInfo(View v){
+
+		threadHandler = new Handler() {
+
+			public void handleMessage(Message msg) {
+				String status = (String) msg.obj;
+				CheckinActivity.this.setProgressBarIndeterminateVisibility(false);
+				
+				if(status.equalsIgnoreCase("Complete"))
+				{
+					Toast.makeText(CheckinActivity.this, "Checkin Success!", Toast.LENGTH_LONG).show();
+				}
+				else
+				{
+					Toast.makeText(CheckinActivity.this, "Checkin Failed!", Toast.LENGTH_LONG).show();
+				} 
+
+			}
+		};
+
+		this.setProgressBarIndeterminateVisibility(true);
 		new DataThread().start();
+		
 		Intent i = new Intent(CheckinActivity.this, HomeScreenActivity.class);
 		startActivity(i);
 	}

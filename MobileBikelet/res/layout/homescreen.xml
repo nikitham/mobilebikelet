@@ -30,7 +30,7 @@
             android:layout_marginTop="50sp"
             android:onClick="checkInBike"
             android:background="@null"
-            android:src="@drawable/ic_launcher_bikerack" />
+            android:src="@drawable/rack" />
     </LinearLayout>
 
     <LinearLayout
@@ -47,7 +47,7 @@
             android:shadowDx="0.0"
             android:shadowDy="0.0"
             android:shadowRadius="8"
-            android:text="Check Out Bike"
+            android:text="Check Out"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
@@ -62,7 +62,7 @@
             android:shadowDx="0.0"
             android:shadowDy="0.0"
             android:shadowRadius="8"
-            android:text="Check In Bike"
+            android:text="Check In"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
@@ -109,7 +109,7 @@
             android:shadowDx="0.0"
             android:shadowDy="0.0"
             android:shadowRadius="8"
-            android:text="View Latest Transaction"
+            android:text="Transaction"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
@@ -125,7 +125,7 @@
             android:shadowDx="0.0"
             android:shadowDy="0.0"
             android:shadowRadius="8"
-            android:text="View Health Statistics"
+            android:text="Health Meter"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
