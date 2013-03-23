@@ -2,7 +2,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@drawable/greenbackground">
+    android:background="#EFEFEF">
 
 
     <LinearLayout
@@ -11,26 +11,26 @@
 
         <ImageButton
             android:id="@+id/checkoutbutton"
-            android:layout_width="76dp"
-            android:layout_height="71dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:layout_marginLeft="30sp"
             android:layout_marginRight="50sp"
             android:layout_marginTop="50sp"
             android:clickable="true"
             android:background="@null"
             android:onClick="checkOutBike"
-            android:src="@drawable/ic_launcher_ridebike" />
+            android:src="@drawable/checkout" />
 
         <ImageButton
             android:id="@+id/checkinbutton"
-            android:layout_width="76dp"
-            android:layout_height="71dp"
-            android:layout_marginLeft="60sp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_marginLeft="40sp"
             android:layout_marginRight="50sp"
             android:layout_marginTop="50sp"
             android:onClick="checkInBike"
             android:background="@null"
-            android:src="@drawable/rack" />
+            android:src="@drawable/checkin1" />
     </LinearLayout>
 
     <LinearLayout
@@ -49,7 +49,7 @@
             android:shadowRadius="8"
             android:text="Check Out"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="15sp" />
 
         <TextView
@@ -64,7 +64,7 @@
             android:shadowRadius="8"
             android:text="Check In"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="15sp" />
     </LinearLayout>
 
@@ -74,14 +74,14 @@
 
         <ImageButton
             android:id="@+id/transactionbutton"
-            android:layout_width="76dp"
-            android:layout_height="71dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:layout_marginLeft="30sp"
             android:layout_marginRight="50sp"
             android:layout_marginTop="70sp"
             android:onClick="clickViewTransaction"
             android:background="@null"
-            android:src="@drawable/ic_launcher_renttransactions" />
+            android:src="@drawable/transaction" />
 
         <ImageButton
             android:id="@+id/statisticsbutton"
@@ -111,7 +111,7 @@
             android:shadowRadius="8"
             android:text="Transaction"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="15sp" />
 
         <TextView
@@ -127,7 +127,7 @@
             android:shadowRadius="8"
             android:text="Health Meter"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -146,7 +146,7 @@
   		    
   		    android:background="@null"
   		    android:onClick="signOut"
-  		    android:src="@drawable/ic_exit" />
+  		    android:src="@drawable/logout2" />
 
     </LinearLayout>
 
@@ -161,7 +161,7 @@
             android:layout_marginLeft="10sp"
             android:text="Sign Out"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="13sp" />
      
     </LinearLayout>

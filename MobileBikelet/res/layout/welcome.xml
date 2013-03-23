@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" 
-    android:background="@drawable/bikelethome">
+    android:background="#EFEFEF">
 
     <View
         android:layout_width="40sp"
@@ -17,7 +17,7 @@
         android:layout_marginLeft="50dp"
         android:gravity="center"
         android:text="@string/hello"
-        android:textColor="#FFFFFF"
+        android:textColor="#b0250e"
         android:textSize="22sp"
          />
 
