@@ -8,13 +8,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#EFEFEF"
+    android:background="@drawable/bgall"
     tools:context=".CheckinActivity" >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30sp"
+        android:textColor="#b0250e"
         android:text="@string/hello_world" />
 
     <LinearLayout
@@ -25,6 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#b0250e"
             android:layout_marginRight="20sp"
             android:text="@string/to_station" />
 
@@ -45,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30sp"
+            android:textColor="#b0250e"
             android:text="@string/comments"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -69,6 +72,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:onClick="checkinUpdatedInfo"
+            android:background="#b0250e"
+            android:textColor="#ffffff"
             android:text="Check In" />
 
     </LinearLayout>

@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#EFEFEF"
+    android:background="@drawable/bgall"
     tools:context=".ViewStatsActivity">
 
     <TextView
@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="30dp"
+        android:textColor="#b0250e"
         android:text="@string/title_view_stat" />
     
     
@@ -30,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30sp"
+            android:textColor="#b0250e"
             android:text="Calories Burned"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -37,6 +39,7 @@
             android:id="@+id/calorieValueId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#b0250e"
             style="@style/TextFieldStyle"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -51,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30sp"
+            android:textColor="#b0250e"
             android:text="Co2 Saved(lbs)"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -59,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextFieldStyle"
+            android:textColor="#b0250e"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </LinearLayout>
@@ -66,13 +71,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" >
+        android:layout_gravity="center_horizontal"
+        android:gravity="center" >
 
         <Button
             android:id="@+id/gohome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="#b0250e"
+            android:gravity="center"
+            android:textColor="#ffffff"
             android:text="OK" />
 
     </LinearLayout>

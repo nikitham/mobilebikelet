@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#EFEFEF"
+    android:background="@drawable/bgall"
     tools:context=".ViewStatsFormActivity">
 
     <TextView
@@ -17,7 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="30dp"
-        android:text="@string/title_about_rental" />
+        android:textColor="#b0250e"
+        android:text="Health Meter"
+        android:layout_gravity="center" />
     
     
 
@@ -30,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30sp"
+            android:textColor="#b0250e"
             android:text="Distance Covered"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -51,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30sp"
+            android:textColor="#b0250e"
             android:text="Total Time in Minutes"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -73,6 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="100sp"
             android:paddingBottom="20dp"
+            android:textColor="#b0250e"
             android:text="Your Weight"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -93,6 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30sp"
+            android:textColor="#b0250e"
             android:text="Travel Type"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -110,11 +116,15 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:gravity="center">
    <Button
        android:id="@+id/submitStatInfoButtonId"
        android:layout_width="wrap_content"
        android:layout_height="match_parent"
+       android:background="#b0250e"
+       android:textColor="#ffffff"
+       android:gravity="center"
        android:text="View Statistics" />
 	</LinearLayout>
 </LinearLayout>
