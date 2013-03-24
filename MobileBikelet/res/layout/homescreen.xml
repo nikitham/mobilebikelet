@@ -2,7 +2,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="#EFEFEF">
+    android:background="#FFFFFF">
 
 
     <LinearLayout
@@ -11,26 +11,26 @@
 
         <ImageButton
             android:id="@+id/checkoutbutton"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            android:layout_marginLeft="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40sp"
             android:layout_marginRight="50sp"
             android:layout_marginTop="50sp"
             android:clickable="true"
             android:background="@null"
             android:onClick="checkOutBike"
-            android:src="@drawable/checkout" />
+            android:src="@drawable/checkoutpattern3" />
 
         <ImageButton
             android:id="@+id/checkinbutton"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="40sp"
             android:layout_marginRight="50sp"
             android:layout_marginTop="50sp"
             android:onClick="checkInBike"
             android:background="@null"
-            android:src="@drawable/checkin1" />
+            android:src="@drawable/checkinpattern3" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,7 +56,7 @@
             android:id="@+id/checkintext"
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="100sp"
+            android:layout_marginLeft="75sp"
             android:gravity="center"
             android:shadowColor="#00CD00"
             android:shadowDx="0.0"
@@ -74,20 +74,20 @@
 
         <ImageButton
             android:id="@+id/transactionbutton"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            android:layout_marginLeft="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40sp"
             android:layout_marginRight="50sp"
             android:layout_marginTop="70sp"
             android:onClick="clickViewTransaction"
             android:background="@null"
-            android:src="@drawable/transaction" />
+            android:src="@drawable/trpattern2" />
 
         <ImageButton
             android:id="@+id/statisticsbutton"
             android:layout_width="76dp"
             android:layout_height="71dp"
-            android:layout_marginLeft="60sp"
+            android:layout_marginLeft="50sp"
             android:layout_marginRight="50sp"
             android:layout_marginTop="70sp"
             android:background="@null"
