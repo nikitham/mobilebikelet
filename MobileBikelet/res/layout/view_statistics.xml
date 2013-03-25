@@ -5,86 +5,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/bgall"
     tools:context=".ViewStatsActivity">
 
-    <TextView
-        android:id="@+id/aboutRentId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="30dp"
-        android:textColor="#b0250e"
-        android:text="@string/title_view_stat" />
-    
-    
-
+    <ImageView
+	    android:layout_width="match_parent"
+	    android:layout_height="30dp"
+		android:adjustViewBounds="false"
+	    android:src="@drawable/bikeletlogo4" />
+     
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
+    	android:layout_height="match_parent"
+    	android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+    	android:paddingLeft="@dimen/activity_horizontal_margin"
+    	android:paddingRight="@dimen/activity_horizontal_margin"
+    	android:paddingTop="@dimen/activity_vertical_margin">
+    	
         <TextView
-            android:id="@+id/calorieLableId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:textColor="#b0250e"
-            android:text="Calories Burned"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+	        android:id="@+id/aboutRentId"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingBottom="30dp"
+	        android:textColor="#b0250e"
+	        android:text="@string/title_view_stat" />
 
-        <TextView
-            android:id="@+id/calorieValueId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#b0250e"
-            style="@style/TextFieldStyle"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    </LinearLayout>
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/calorieLableId"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="30sp"
+	            android:textColor="#b0250e"
+	            android:text="Calories Burned"
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	        <TextView
+	            android:id="@+id/calorieValueId"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textColor="#b0250e"
+	            style="@style/TextFieldStyle"
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/co2LableId"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="30sp"
+	            android:textColor="#b0250e"
+	            android:text="Co2 Saved(lbs)"
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	        <TextView
+	            android:id="@+id/co2ValueId"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            style="@style/TextFieldStyle"
+	            android:textColor="#b0250e"
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="50dp"
+	        android:layout_gravity="center_horizontal"
+	        android:gravity="center" >
+	
+	        <Button
+	            android:id="@+id/gohome"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center"
+	            android:background="@drawable/red_button"
+	            android:gravity="center"
+	            android:textColor="#ffffff"
+	            android:textSize="18sp"
+	            android:text="OK" />
+	
+	    </LinearLayout>
+         
+	</LinearLayout>
     
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/co2LableId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:textColor="#b0250e"
-            android:text="Co2 Saved(lbs)"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/co2ValueId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextFieldStyle"
-            android:textColor="#b0250e"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center" >
-
-        <Button
-            android:id="@+id/gohome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/red_button"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:text="OK" />
-
-    </LinearLayout>
-
 </LinearLayout>    

@@ -18,18 +18,11 @@
         android:gravity="center"
         android:text="@string/hello"
         android:textColor="#b0250e"
-        
-        android:textSize="22sp"
-         />
+        android:textSize="22sp" />
 
     <View
         android:layout_width="40sp"
         android:layout_height="25sp" />
-    <!-- <TextView -->
-    <!-- style="@style/DescFont" -->
-    <!-- android:textSize="13dp" -->
-    <!-- android:gravity="center" -->
-    <!-- android:text="@string/descone" /> -->
 
     <View
         android:layout_width="40sp"
@@ -49,12 +42,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"        
         android:onClick="onClickWelcome"
-        android:paddingBottom="10dp"
+        android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="10dp"
+        android:paddingTop="5dp"
         android:background="@drawable/red_button"
         android:id="@+id/welcomeOKButton"
+        android:textSize="20sp"
         android:textColor="#FFFFFF"
         android:text="   OK    " />
 
@@ -74,6 +68,7 @@
         android:textColor="#FFFFFF"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
+        android:textSize="17sp"
         android:text="SIGN IN" />
 
     <View
@@ -83,11 +78,5 @@
     <TextView
         android:layout_width="40sp"
         android:layout_height="25sp" />
-
-
-    <!-- <ImageView -->
-    <!-- android:layout_width="wrap_content" -->
-    <!-- android:layout_height="wrap_content" -->
-    <!-- android:src="@drawable/background_android_pets" /> -->
 
 </LinearLayout>

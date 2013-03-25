@@ -70,6 +70,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/red_button"
                 android:textColor="#FFFFFF"
+                android:textSize="20sp"
                 android:paddingLeft="32dp"
                 android:paddingRight="32dp"
                 android:text="@string/action_sign_in" />

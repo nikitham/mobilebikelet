@@ -4,180 +4,194 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/bgall"
     tools:context=".ViewTransactionActivity" >
 
-    <TextView
-        android:id="@+id/checkintext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="30dp"
-        android:textColor="#b0250e"
-        android:text="@string/hello_world" />
-
-    <TextView
-        android:id="@+id/heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingBottom="20dp"
-        android:textColor="#b0250e"
-        android:text="Latest Transaction Summary"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="30dp"
+		android:adjustViewBounds="false"
+		android:src="@drawable/bikeletlogo4" />
+     
+     <LinearLayout
+     	android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+    	android:paddingLeft="@dimen/activity_horizontal_margin"
+    	android:paddingRight="@dimen/activity_horizontal_margin"
+    	android:paddingTop="@dimen/activity_vertical_margin">
+    
         <TextView
-            android:id="@+id/bikeid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="100sp"
-            android:paddingBottom="20dp"
-            android:text="Bike Type"
-            android:textColor="#b0250e"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+	        android:id="@+id/checkintext"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingBottom="30dp"
+	        android:textColor="#b0250e"
+	        android:text="@string/hello_world" />
 
-        <TextView
-            android:id="@+id/bikeinfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#b0250e"
-            android:text=" "
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+	    <TextView
+	        android:id="@+id/heading"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:paddingBottom="20dp"
+	        android:textColor="#b0250e"
+	        android:text="Latest Transaction Summary"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    </LinearLayout>
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/bikeid"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="100sp"
+	            android:paddingBottom="20dp"
+	            android:text="Bike Type"
+	            android:textColor="#b0250e"
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	        <TextView
+	            android:id="@+id/bikeinfo"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textColor="#b0250e"
+	            android:text=" "
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/checkoutstation"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="30sp"
+	            android:textColor="#b0250e"
+	            android:text="Checked Out from"
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	        <TextView
+	            android:id="@+id/checkoutfrom"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textColor="#b0250e"
+	            android:text=" "
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    </LinearLayout>
 
-        <TextView
-            android:id="@+id/checkoutstation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:textColor="#b0250e"
-            android:text="Checked Out from"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/checkouttime"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="128sp"
+	            android:paddingBottom="20dp"
+	            android:textColor="#b0250e"
+	            android:text="At"
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	        <TextView
+	            android:id="@+id/checkoutat"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textColor="#b0250e"
+	            android:text=" "
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/checkinstation"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="52dp"
+	            android:textColor="#b0250e"
+	            android:text="Checked In To"
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	        <TextView
+	            android:id="@+id/checkinto"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textColor="#b0250e"
+	            android:text=" "
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/checkintime"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="128sp"
+	            android:paddingBottom="20dp"
+	            android:textColor="#b0250e"
+	            android:text="At"
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	        <TextView
+	            android:id="@+id/checkinat"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textColor="#b0250e"
+	            android:text=" "
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/totalcharges"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="50dp"
+	            android:textColor="#b0250e"
+	            android:text="Total Charges "
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	        <TextView
+	            android:id="@+id/transactioncharges"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textColor="#b0250e"
+	            android:text=" "
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    </LinearLayout>
 
-        <TextView
-            android:id="@+id/checkoutfrom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#b0250e"
-            android:text=" "
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/checkouttime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="128sp"
-            android:paddingBottom="20dp"
-            android:textColor="#b0250e"
-            android:text="At"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/checkoutat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#b0250e"
-            android:text=" "
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/checkinstation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="52dp"
-            android:textColor="#b0250e"
-            android:text="Checked In To"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/checkinto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#b0250e"
-            android:text=" "
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/checkintime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="128sp"
-            android:paddingBottom="20dp"
-            android:textColor="#b0250e"
-            android:text="At"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/checkinat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#b0250e"
-            android:text=" "
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/totalcharges"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="50dp"
-            android:textColor="#b0250e"
-            android:text="Total Charges "
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/transactioncharges"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#b0250e"
-            android:text=" "
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/okbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/red_button"
-        android:textColor="#ffffff"
-        android:onClick="okTransaction"
-        android:text="OK" />
-
+	    <Button
+	        android:id="@+id/okbutton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:background="@drawable/red_button"
+	        android:textColor="#ffffff"
+	        android:textSize="20sp"
+	        android:onClick="okTransaction"
+	        android:text="OK" />
+         	
+	</LinearLayout>
+    
 </LinearLayout>
