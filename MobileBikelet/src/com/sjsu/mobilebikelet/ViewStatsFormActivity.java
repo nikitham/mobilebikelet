@@ -66,7 +66,9 @@ public class ViewStatsFormActivity extends Activity {
 					minutesInputId.setError("Invalid Minutes");
 					return;
 				}
-				
+//				System.out.println("distance: "+distanceCoveredStr);
+//				System.out.println("weight: "+weight);
+//				System.out.println("minutes: "+minutes);
 				double calorieBurned = calculateCaloriesBurned(Integer.parseInt(weight)
 						, Integer.parseInt(minutes), Double.parseDouble(distanceCoveredStr), tripTypeValue);
 				
@@ -87,19 +89,33 @@ public class ViewStatsFormActivity extends Activity {
 	}
 	
 	private double calculateCaloriesBurned(int weight, int minutes, double miles, String tripType){
-		
+		System.out.println("distance: "+miles);
+		System.out.println("weight: "+weight);
+		System.out.println("minutes: "+minutes);
 		double mph = miles*60.0/minutes;
+		System.out.println("mph: "+mph);
 		int gradiance = 0;
 		if ("Leisurely".equalsIgnoreCase(tripType)){
 			gradiance = 4;
 		} else if ("Moderate".equalsIgnoreCase(tripType)){
 			gradiance = 8;
 		} else {
-			gradiance = 12;
+			gradiance = 16;
 		}
+		System.out.println("gradience:"+gradiance);
 		//Formula from the internet resource http://www.ehow.com/about_5417938_calories-burned-riding-bicycle.html
-		double caloriesBurned = (mph*weight*(.0053 + gradiance/100) + .0083*(Math.pow(mph, 3)))*7.2;
 		
+		double part2 = 0.0083*(Math.pow(mph, 3));
+		double part1= (0.0053 + (gradiance/100.0));
+		double part3 = mph*weight*(part1);
+		System.out.println("part1:"+part1);
+		System.out.println("part2:"+part2);
+		System.out.println("part3:"+part3);
+		double caloriesBurned = (part3+ part2 )*7.2;
+		
+		System.out.println("CalorieBurned:"+caloriesBurned);
+		caloriesBurned = (caloriesBurned * minutes)/60.0; 
+		System.out.println("CalorieBurned:"+caloriesBurned);
 		return caloriesBurned;
 	}
 	
