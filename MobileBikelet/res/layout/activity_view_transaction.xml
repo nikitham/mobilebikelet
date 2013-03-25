@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="100sp"
             android:paddingBottom="20dp"
-            android:text="Bike Id"
+            android:text="Bike Type"
             android:textColor="#b0250e"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 

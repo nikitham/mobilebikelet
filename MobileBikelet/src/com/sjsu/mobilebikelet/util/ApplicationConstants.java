@@ -4,8 +4,8 @@ public class ApplicationConstants {
 
 	public static String USER_PREF = "USER_PREF";
 
-//	public static String APPLICATION_HOST = "http://bikelet.cloudfoundry.com/";
-	public static String APPLICATION_HOST = "http://bikeletsaas.cloudfoundry.com/";
+	public static String APPLICATION_HOST = "http://bikelet.cloudfoundry.com/";
+//	public static String APPLICATION_HOST = "http://bikeletsaas.cloudfoundry.com/";
 //	public static String APPLICATION_HOST = "http://192.168.1.111:8080/bikelet/"; 
 	
 	public static String AUTHENTICATION_JSON_URL = APPLICATION_HOST
