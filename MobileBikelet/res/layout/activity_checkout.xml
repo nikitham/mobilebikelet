@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="30dp"
-        android:textColor="#b0250e"
+        android:textColor="#a94333"
         android:text="@string/hello_world" />
 
     <LinearLayout
