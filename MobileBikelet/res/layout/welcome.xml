@@ -53,7 +53,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
-        android:background="#B14836"
+        android:background="@drawable/red_button"
         android:id="@+id/welcomeOKButton"
         android:textColor="#FFFFFF"
         android:text="   OK    " />
@@ -70,7 +70,7 @@
         android:onClick="onClickSetUser"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
-        android:background="#B14836"
+        android:background="@drawable/red_button"
         android:textColor="#FFFFFF"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
