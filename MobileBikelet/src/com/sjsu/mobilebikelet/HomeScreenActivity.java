@@ -109,7 +109,6 @@ public class HomeScreenActivity extends Activity{
 		@Override
 		protected void onPostExecute(final Boolean success) {
 			if (success) {
-				Toast.makeText(HomeScreenActivity.this, "Bike Checked out", Toast.LENGTH_LONG).show();
 				Intent i = new Intent(HomeScreenActivity.this, CheckinActivity.class);
 				startActivity(i);
 				

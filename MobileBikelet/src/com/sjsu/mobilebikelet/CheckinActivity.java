@@ -236,7 +236,6 @@ public class CheckinActivity extends Activity {
 	        	checkin.setClickable(false);
 //				finish();
 			} else {
-				Toast.makeText(CheckinActivity.this, "Station is not full", Toast.LENGTH_LONG).show();
 	        	checkin.setClickable(true);
 //				finish();
 			}
